@@ -1,0 +1,20 @@
+{
+  "name": "slide-ng-themes",
+  "private": true,
+  "description": "The official themes of slide.ng, one npm package each",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "format": "prettier --write \"**/*.{json,md}\" \"tests/**/*.mjs\" \"packages/*/{layouts,components,styles}/**/*.{ts,css}\"",
+    "format:check": "prettier --check \"**/*.{json,md}\" \"tests/**/*.mjs\" \"packages/*/{layouts,components,styles}/**/*.{ts,css}\"",
+    "test": "node --test tests/packages.test.mjs && node tests/themes.mjs"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  },
+  "engines": {
+    "node": ">=22.22.3"
+  }
+}
