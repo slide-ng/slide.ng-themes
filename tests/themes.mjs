@@ -268,7 +268,7 @@ const THEMES = {
         ['.adev-steps ol', 'listStyleType', 'none'],
         ['.adev-button-primary', 'borderTopColor', 'rgba(0, 0, 0, 0)'],
       ],
-      ['adev-default', ['.adev-code-card-header', 'backgroundColor', rgb(35, 33, 37)]],
+      ['adev-default', ['.adev-code-card-header', 'backgroundColor', /^(rgb|color)\(/]],
       [
         'adev-default',
         ['adev-default th', 'fontWeight', '500'],
@@ -276,11 +276,49 @@ const THEMES = {
       ],
       ['adev-default', ['adev-default td code', 'fontFamily', /^"DM Mono"/]],
       [
+        'adev-default',
+        ['.slidev-code', 'backgroundColor', WHITE],
+        ['.slidev-code', 'fontSize', '14px'],
+        ['.slidev-code code', 'fontFamily', /^"DM Mono"/],
+        ['.slidev-code-block-title', 'backgroundClip', /^text/],
+      ],
+      ['adev-default', ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
+      ['adev-default', ['.slidev-code', 'backgroundColor', WHITE]],
+      ['adev-default', ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
+      [
+        'adev-default',
+        ['.adev-button + .adev-button', 'marginInlineStart', '12px'],
+        ['.flex .adev-button + .adev-button', 'marginInlineStart', '12px'],
+      ],
+      ['adev-default', ['.adev-button + .adev-button', 'marginInlineStart', '12px']],
+      [
         'adev-end',
         ['adev-end', 'backgroundImage', /gradient/],
         ['adev-end', 'textAlign', 'center'],
       ],
     ],
+    tokens: {
+      30: {
+        export: rgb(215, 58, 73),
+        "'app-user'": rgb(3, 47, 98),
+        input: rgb(111, 66, 193),
+        User: rgb(111, 66, 193),
+        Component: rgb(111, 66, 193),
+        '@if': rgb(215, 58, 73),
+        h2: rgb(34, 134, 58),
+      },
+      31: {
+        export: rgb(249, 117, 131),
+        "'app-user'": rgb(158, 203, 255),
+        input: rgb(179, 146, 240),
+        User: rgb(179, 146, 240),
+        Component: rgb(179, 146, 240),
+        '@if': rgb(249, 117, 131),
+        h2: rgb(133, 232, 157),
+      },
+      32: { '@for': rgb(215, 58, 73), "'ok'": rgb(3, 47, 98), item: rgb(0, 92, 197) },
+      33: { '@defer': rgb(249, 117, 131), "'ok'": rgb(158, 203, 255), item: rgb(121, 184, 255) },
+    },
     png: { slide: 1, check: (p) => p[2] > 180 && p[1] < 80 },
     contrast: {
       light: [4, 'adev-default'],
@@ -422,12 +460,83 @@ try {
         (dark) => document.documentElement.classList.toggle('dark', dark),
         scheme === 'dark',
       );
-      for (const [what, ratio, min] of await measure(page, selector))
+      for (const [what, ratio, min] of await measure(
+        page,
+        selector,
+        scheme === 'light' ? 'light' : 'dark',
+      ))
         t.ok(
           `${name} ${scheme}: contrast ${what}`,
           ratio >= min,
           `${ratio.toFixed(2)} (>= ${min})`,
         );
+      await page.close();
+    }
+
+    for (const [n, tokens] of Object.entries(spec.tokens ?? {})) {
+      const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
+      for (const [text, expected] of Object.entries(tokens)) {
+        const got = await page.evaluate((word) => {
+          const span = [...document.querySelectorAll('pre.shiki .line span')].find(
+            (e) => e.textContent.trim() === word,
+          );
+          return span ? getComputedStyle(span).color : 'no such token';
+        }, text);
+        t.ok(`${name} slide ${n}: code token ${text} colour`, got === expected, got);
+      }
+      await page.close();
+    }
+
+    if (name === 'adev') {
+      // The same slide in both schemes: the page switch, and a slide forced to the other scheme.
+      const page = await ctx.open('/30', { width: 1280, height: 720 }, routeFonts);
+      const read = (sel, prop) =>
+        page
+          .locator(sel)
+          .first()
+          .evaluate((e, p) => getComputedStyle(e)[p], prop);
+      const token = () =>
+        page.evaluate(
+          () =>
+            getComputedStyle(
+              [...document.querySelectorAll('pre.shiki .line span')].find(
+                (e) => e.textContent.trim() === 'export',
+              ),
+            ).color,
+        );
+      const mode = async (dark, forced) => {
+        await page.evaluate(
+          ([d, f]) => {
+            document.documentElement.classList.toggle('dark', d);
+            const layout = document.querySelector('adev-default');
+            layout.classList.remove('light', 'dark');
+            if (f) layout.classList.add(f);
+          },
+          [dark, forced],
+        );
+      };
+      const expected = {
+        light: [WHITE, WHITE, rgb(215, 58, 73)],
+        dark: [ADEV_DARK, rgb(36, 41, 46), rgb(249, 117, 131)],
+      };
+      for (const [label, dark, forced, scheme] of [
+        ['page switch to dark', true, null, 'dark'],
+        ['page switch to light', false, null, 'light'],
+        ['light slide on a dark page', true, 'light', 'light'],
+        ['dark slide on a light page', false, 'dark', 'dark'],
+      ]) {
+        await mode(dark, forced);
+        const got = [
+          await read('adev-default', 'backgroundColor'),
+          await read('.slidev-code', 'backgroundColor'),
+          await token(),
+        ];
+        t.ok(
+          `adev: ${label} (page, code panel, keyword)`,
+          got.join() === expected[scheme].join(),
+          got.join(' | '),
+        );
+      }
       await page.close();
     }
 

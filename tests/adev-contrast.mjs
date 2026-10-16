@@ -2,8 +2,8 @@
 // Each pair is [name, text colour, surface colour, smallest ratio]; 4.5 for text, 3 for large text and graphics.
 const SURFACES = {
   page: 'var(--adev-page)',
-  panel: 'var(--adev-octonary)',
-  header: 'var(--adev-septenary)',
+  panel: 'var(--adev-code-bg)',
+  header: 'var(--adev-subtle-purple)',
   inlineCode: 'var(--adev-subtle-purple)',
   quote: 'color-mix(in srgb, var(--adev-vivid-pink) 5%, var(--adev-page))',
   card: 'color-mix(in srgb, var(--adev-vivid-pink) 6%, var(--adev-page))',
@@ -16,17 +16,47 @@ const SURFACES = {
   heroViolet: '#8514f5',
   heroMiddle: 'color-mix(in srgb, #e90464 50%, #8514f5)',
 };
+const GITHUB = {
+  light: {
+    keyword: '#d73a49',
+    string: '#032f62',
+    function: '#6f42c1',
+    type: '#005cc5',
+    tag: '#22863a',
+    constant: '#e36209',
+  },
+  dark: {
+    keyword: '#f97583',
+    string: '#9ecbff',
+    function: '#b392f0',
+    type: '#79b8ff',
+    tag: '#85e89d',
+    constant: '#ffab70',
+  },
+};
 const ACCENTS = ['bright-blue', 'cyan', 'hot-red', 'yellow', 'orange-red'];
 
+const TOKENS = Object.entries(GITHUB).flatMap(([scheme, colours]) =>
+  Object.entries(colours).map(([kind, colour]) => [
+    `code ${kind} on the panel`,
+    colour,
+    'panel',
+    kind === 'constant' ? 3 : 4.5,
+    scheme,
+  ]),
+);
+
 const PAIRS = [
+  ...TOKENS,
   ['text on page', 'var(--adev-primary)', 'page', 4.5],
   ['secondary text on page', 'var(--adev-tertiary)', 'page', 4.5],
   ['muted text on page', 'var(--adev-quaternary)', 'page', 4.5],
   ['link on page', 'var(--adev-link)', 'page', 4.5],
   ['kicker on page', 'var(--adev-kicker)', 'page', 4.5],
   ['text on code panel', 'var(--adev-primary)', 'panel', 4.5],
-  ['file name on code header', 'var(--adev-tertiary)', 'header', 4.5],
-  ['language label on code header', 'var(--adev-quaternary)', 'header', 4.5],
+  ['file name start on code header', 'var(--adev-electric-violet)', 'header', 4.5],
+  ['file name end on code header', 'var(--adev-bright-blue)', 'header', 4.5],
+  ['language label on code header', 'var(--adev-tertiary)', 'header', 4.5],
   ['inline code', 'var(--adev-code-ink)', 'inlineCode', 4.5],
   ['quote text', 'var(--adev-primary)', 'quote', 4.5],
   ['quote author', 'var(--adev-tertiary)', 'quote', 4.5],
@@ -59,7 +89,7 @@ const PAIRS = [
 ];
 
 // Chromium paints the pair to a canvas, which turns oklch() and color-mix() into plain sRGB.
-export async function measure(page, selector) {
+export async function measure(page, selector, scheme) {
   return page
     .locator(selector)
     .first()
@@ -95,6 +125,6 @@ export async function measure(page, selector) {
         probe.remove();
         return out;
       },
-      { pairs: PAIRS, surfaces: SURFACES },
+      { pairs: PAIRS.filter((pair) => !pair[4] || pair[4] === scheme), surfaces: SURFACES },
     );
 }
