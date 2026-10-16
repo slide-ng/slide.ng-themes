@@ -1,12 +1,12 @@
 ---
 theme: adev
-title: adev
+title: slide.ng, the adev theme
 layout: cover
 ---
 
-# adev
+# slide.ng
 
-The look of angular.dev, for slides
+The angular.dev theme for slide.ng: components and more
 
 ---
 layout: intro
