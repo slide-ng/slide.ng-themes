@@ -236,14 +236,10 @@ const THEMES = {
         'adev-default',
         ['.adev-alert-note', 'borderLeftWidth', '3px'],
         ['.adev-alert-critical svg', 'width', /^22(\.\d+)?px$/],
+        ['.adev-alert-warning svg', 'width', /^22(\.\d+)?px$/],
         ['adev-alert', 'backgroundColor', /^(rgb|color)\(/],
       ],
-      [
-        'adev-default',
-        ['adev-callout', 'borderLeftWidth', '3px'],
-        ['.adev-callout-warning svg', 'width', /^22\.\d+px$/],
-        ['adev-callout', 'backgroundColor', /^(rgb|color)\(/],
-      ],
+      ['adev-default'],
       ['adev-default'],
       ['adev-default'],
       ['adev-default'],
@@ -306,7 +302,6 @@ const THEMES = {
       [10, ['adev-fact', 'backgroundColor', ADEV_DARK]],
       [11, ['adev-statement', 'backgroundColor', ADEV_DARK]],
       [12, ['adev-alert', 'backgroundColor', /^(rgb|color)\(/]],
-      [13, ['adev-callout', 'backgroundColor', /^(rgb|color)\(/]],
       [17, ['adev-card', 'backgroundColor', ADEV_DARK]],
       [
         19,
@@ -639,22 +634,22 @@ try {
       );
       await stored.close();
 
-      const callouts = await ctx.open('/13', sized, routeFonts);
-      const before = await callouts
-        .locator('adev-callout')
+      const alerts = await ctx.open('/12', sized, routeFonts);
+      const before = await alerts
+        .locator('adev-alert')
         .first()
         .evaluate((e) => getComputedStyle(e).backgroundColor);
-      await button(callouts).click();
-      const after = await callouts
-        .locator('adev-callout')
+      await button(alerts).click();
+      const after = await alerts
+        .locator('adev-alert')
         .first()
         .evaluate((e) => getComputedStyle(e).backgroundColor);
       t.ok(
-        'adev: the callout changes colour with the button',
+        'adev: the alert changes colour with the button',
         before !== after,
         `${before} -> ${after}`,
       );
-      await callouts.close();
+      await alerts.close();
     }
 
     // One slide as PNG, with the real command line, from the build above.

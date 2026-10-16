@@ -7,11 +7,6 @@ const SURFACES = {
   inlineCode: 'var(--adev-subtle-purple)',
   quote: 'color-mix(in srgb, var(--adev-vivid-pink) 5%, var(--adev-page))',
   card: 'color-mix(in srgb, var(--adev-vivid-pink) 6%, var(--adev-page))',
-  note: 'color-mix(in srgb, var(--adev-bright-blue) 6%, var(--adev-page))',
-  tip: 'color-mix(in srgb, var(--adev-cyan) 6%, var(--adev-page))',
-  important: 'color-mix(in srgb, var(--adev-hot-red) 6%, var(--adev-page))',
-  warning: 'color-mix(in srgb, var(--adev-yellow) 6%, var(--adev-page))',
-  critical: 'color-mix(in srgb, var(--adev-orange-red) 6%, var(--adev-page))',
   heroPink: '#e90464',
   heroViolet: '#8514f5',
   heroMiddle: 'color-mix(in srgb, #e90464 50%, #8514f5)',
@@ -34,7 +29,6 @@ const GITHUB = {
     constant: '#ffab70',
   },
 };
-const ACCENTS = ['bright-blue', 'cyan', 'hot-red', 'yellow', 'orange-red'];
 
 const TOKENS = Object.entries(GITHUB).flatMap(([scheme, colours]) =>
   Object.entries(colours).map(([kind, colour]) => [
@@ -62,11 +56,6 @@ const PAIRS = [
   ['quote author', 'var(--adev-tertiary)', 'quote', 4.5],
   ['card label', 'var(--adev-kicker)', 'card', 4.5],
   ['card body', 'var(--adev-tertiary)', 'card', 4.5],
-  ['callout text, note', 'var(--adev-primary)', 'note', 4.5],
-  ['callout text, tip', 'var(--adev-primary)', 'tip', 4.5],
-  ['callout text, important', 'var(--adev-primary)', 'important', 4.5],
-  ['callout text, warning', 'var(--adev-primary)', 'warning', 4.5],
-  ['callout text, critical', 'var(--adev-primary)', 'critical', 4.5],
   ...['orange-red', 'vivid-pink', 'electric-violet'].map((c) => [
     `gradient text stop ${c} on page`,
     `var(--adev-${c})`,
@@ -74,18 +63,6 @@ const PAIRS = [
     3,
   ]),
   ...['heroPink', 'heroViolet', 'heroMiddle'].map((h) => [`white text on ${h}`, '#fff', h, 4.5]),
-  ...ACCENTS.map((a) => [
-    `callout icon ${a} on its tint`,
-    `color-mix(in srgb, var(--adev-${a}) 80%, var(--adev-full))`,
-    {
-      'bright-blue': 'note',
-      cyan: 'tip',
-      'hot-red': 'important',
-      yellow: 'warning',
-      'orange-red': 'critical',
-    }[a],
-    3,
-  ]),
 ];
 
 // Chromium paints the pair to a canvas, which turns oklch() and color-mix() into plain sRGB.

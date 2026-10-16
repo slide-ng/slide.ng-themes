@@ -16,7 +16,17 @@ const { launch, reporter, serve } = await import(
 );
 const { makeContext } = await import(pathToFileURL(join(core, 'tests/e2e/helpers.mjs')).href);
 
-const KINDS = ['note', 'tip', 'todo', 'question', 'summary', 'tldr', 'critical', 'important'];
+const KINDS = [
+  'note',
+  'tip',
+  'todo',
+  'question',
+  'summary',
+  'tldr',
+  'warning',
+  'critical',
+  'important',
+];
 const API = [
   'class',
   'const',
@@ -126,7 +136,7 @@ try {
   for (const [i, n] of SLIDES.entries())
     pages[i + 1] = await ctx.open(`/${n}`, undefined, routeFonts);
 
-  t.ok('slide 1: nine alerts', (await count(pages[1], 'adev-alert')) === 9);
+  t.ok('slide 1: ten alerts', (await count(pages[1], 'adev-alert')) === 10);
   t.ok(
     'slide 1: the label is the kind name',
     (await pages[1].locator('.adev-alert-tldr .adev-alert-label').textContent()) === 'TL;DR',
