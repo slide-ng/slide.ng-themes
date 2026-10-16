@@ -18,6 +18,7 @@
     "layouts",
     "components",
     "setup",
+    "layers",
     "styles",
     "public",
     "theme.json",
