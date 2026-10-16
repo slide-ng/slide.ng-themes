@@ -479,7 +479,7 @@ try {
     for (const [scheme, [n, selector]] of Object.entries(spec.contrast ?? {})) {
       const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
       await page.evaluate(
-        (dark) => document.documentElement.classList.toggle('dark', dark),
+        (dark) => (document.documentElement.dataset.adevScheme = dark ? 'dark' : 'light'),
         scheme === 'dark',
       );
       for (const [what, ratio, min] of await measure(
@@ -497,7 +497,7 @@ try {
 
     for (const [n, ...checks] of spec.darkChecks ?? []) {
       const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
-      await page.evaluate(() => document.documentElement.classList.add('dark'));
+      await page.evaluate(() => (document.documentElement.dataset.adevScheme = 'dark'));
       await runChecks(page, `${name} slide ${n} in the dark scheme`, checks);
       await page.close();
     }
@@ -506,7 +506,7 @@ try {
       for (const [scheme, tokens] of Object.entries(bySchemes)) {
         const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
         await page.evaluate(
-          (dark) => document.documentElement.classList.toggle('dark', dark),
+          (dark) => (document.documentElement.dataset.adevScheme = dark ? 'dark' : 'light'),
           scheme === 'dark',
         );
         for (const [text, expected] of Object.entries(tokens)) {
@@ -520,6 +520,121 @@ try {
         }
         await page.close();
       }
+    }
+
+    if (name === 'adev') {
+      const sized = { width: 1280, height: 720 };
+      const look = (page) =>
+        page.evaluate(() => {
+          const color = (e) => getComputedStyle(e).color;
+          const keyword = [...document.querySelectorAll('pre.shiki .line span')].find(
+            (e) => e.textContent.trim() === 'import',
+          );
+          return [
+            getComputedStyle(document.querySelector('adev-default')).backgroundColor,
+            getComputedStyle(document.querySelector('.slidev-code')).backgroundColor,
+            color(keyword),
+          ].join(' | ');
+        });
+      const dock = (page) =>
+        page.evaluate(() => {
+          const bar = getComputedStyle(document.querySelector('app-nav-bar nav > div'));
+          const next = getComputedStyle(document.querySelector('#nav-next'));
+          return [bar.backgroundColor, bar.color, bar.borderTopColor, next.color].join(' | ');
+        });
+      const scheme = (page) => page.evaluate(() => document.documentElement.dataset.adevScheme);
+      const button = (page) => page.getByRole('button', { name: 'Switch slide colour scheme' });
+
+      const page = await ctx.open('/3', sized, routeFonts);
+      const lightLook = await look(page);
+      const dockBefore = await dock(page);
+      const htmlDark = await page.evaluate(() =>
+        document.documentElement.classList.contains('dark'),
+      );
+      t.ok(
+        'adev: the slides start light without a stored choice',
+        (await scheme(page)) === 'light',
+      );
+      t.ok(
+        'adev: the button is not pressed in light',
+        (await button(page).getAttribute('aria-pressed')) === 'false',
+      );
+      await button(page).click();
+      t.ok('adev: the button switches the slides to dark', (await scheme(page)) === 'dark');
+      t.ok(
+        'adev: the button is pressed in dark',
+        (await button(page).getAttribute('aria-pressed')) === 'true',
+      );
+      const darkLook = await look(page);
+      t.ok(
+        'adev: page, code panel and keyword change colour',
+        lightLook.split(' | ').every((c, i) => c !== darkLook.split(' | ')[i]),
+        `${lightLook} -> ${darkLook}`,
+      );
+      t.ok(
+        'adev: html.dark is untouched by the button',
+        (await page.evaluate(() => document.documentElement.classList.contains('dark'))) ===
+          htmlDark,
+      );
+      t.ok(
+        'adev: the dock keeps its colours',
+        (await dock(page)) === dockBefore,
+        `${dockBefore} -> ${await dock(page)}`,
+      );
+      t.ok(
+        'adev: the slide did not move on when the button was clicked',
+        /\/3$/.test(new URL(page.url()).pathname),
+      );
+      await page.reload();
+      await page.waitForFunction(() =>
+        /clicks \d+\/\d+/.test(document.querySelector('#hud')?.innerText ?? ''),
+      );
+      t.ok(
+        'adev: the choice persists after a reload',
+        (await scheme(page)) === 'dark' && (await look(page)) === darkLook,
+      );
+      await button(page).focus();
+      await page.keyboard.press('Enter');
+      t.ok('adev: the button works from the keyboard', (await scheme(page)) === 'light');
+      await page.close();
+
+      const night = await ctx.open('/3', sized, async (pg) => {
+        await routeFonts(pg);
+        await pg.emulateMedia({ colorScheme: 'dark' });
+      });
+      t.ok(
+        'adev: the first value follows a dark system preference',
+        (await scheme(night)) === 'dark',
+      );
+      await night.close();
+
+      const stored = await ctx.open('/3', sized, async (pg) => {
+        await routeFonts(pg);
+        await pg.emulateMedia({ colorScheme: 'dark' });
+        await pg.addInitScript(() => localStorage.setItem('adev-scheme', 'light'));
+      });
+      t.ok(
+        'adev: a stored choice wins over the system preference',
+        (await scheme(stored)) === 'light',
+      );
+      await stored.close();
+
+      const callouts = await ctx.open('/12', sized, routeFonts);
+      const before = await callouts
+        .locator('adev-callout')
+        .first()
+        .evaluate((e) => getComputedStyle(e).backgroundColor);
+      await button(callouts).click();
+      const after = await callouts
+        .locator('adev-callout')
+        .first()
+        .evaluate((e) => getComputedStyle(e).backgroundColor);
+      t.ok(
+        'adev: the callout changes colour with the button',
+        before !== after,
+        `${before} -> ${after}`,
+      );
+      await callouts.close();
     }
 
     // One slide as PNG, with the real command line, from the build above.
