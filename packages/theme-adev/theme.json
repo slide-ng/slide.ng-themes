@@ -1,6 +1,7 @@
 {
   "name": "adev",
   "headmatter": {
+    "colorSchema": "dark",
     "fonts": {
       "sans": "Inter",
       "serif": "Inter Tight",
