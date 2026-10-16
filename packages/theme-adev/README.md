@@ -20,7 +20,7 @@ This theme is inspired by angular.dev. It is not an official Angular theme, and 
 
 ## Light and dark
 
-Both schemes are complete and follow angular.dev's light and dark: every layout, component, callout tint, gradient, border and code colour has a variant for each. The deck follows the colour schema as usual (`colorSchema: auto | light | dark`), so the colour-schema switch and the operating system preference both work. One slide can be forced with `class: dark` or `class: light` in its frontmatter, whatever the page is set to; for `two-cols` use `layoutClass: dark`. The hero panels (`cover`, `end`, the picture side of the image layouts) look the same in both, as on angular.dev. The tests check the contrast of the text colours in light, dark and on a forced slide.
+Both schemes are complete and follow angular.dev's light and dark: every layout, component, callout tint, gradient, border and code colour has a variant for each. The deck follows the colour schema as usual (`colorSchema: auto | light | dark`), so the colour-schema switch and the operating system preference both work. The hero panels (`cover`, `end`, the picture side of the image layouts) look the same in both, as on angular.dev. The tests check the layouts, components, code colours and text contrast in both schemes by switching the page.
 
 ## Angular support built in
 
