@@ -67,6 +67,13 @@ html[data-adev-scheme='dark'] .adev-alert {
   --accent: var(--adev-vivid-pink);
   --rail: linear-gradient(0deg, var(--adev-electric-violet), var(--adev-vivid-pink));
 }
+.adev-alert-warning {
+  --accent: var(--adev-yellow);
+  --rail: linear-gradient(0deg, var(--adev-yellow), var(--adev-orange-red));
+}
+.adev-alert-warning .adev-alert-label {
+  color: color-mix(in srgb, var(--accent) 55%, var(--adev-full));
+}
 .adev-alert-critical {
   --accent: var(--adev-orange-red);
   --rail: linear-gradient(0deg, var(--adev-hot-pink), var(--adev-orange-red));

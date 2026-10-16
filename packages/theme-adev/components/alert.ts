@@ -16,6 +16,7 @@ const KINDS = {
     'TL;DR',
     'M4 4h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H9l-4 4v-4H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm3 4v2h10V8Zm0 4v2h6v-2Z',
   ],
+  warning: ['Warning', 'M12 2 22 12 12 22 2 12Zm-1 5v6h2V7Zm0 8v2h2v-2Z'],
   critical: ['Critical', 'M12 3 22 20H2Zm-1 7v5h2v-5Zm0 6.5v2h2v-2Z'],
   important: ['Important', 'M10.5 4h3v10.5h-3Zm0 12.5h3v3.5h-3Z'],
   helpful: [
