@@ -107,3 +107,7 @@ These addresses are placeholders until the repositories are published.
 ## Contributing
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md). Changes follow the [Code of Conduct](CODE_OF_CONDUCT.md); security problems go through [SECURITY.md](SECURITY.md). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+
+## Disclaimer
+
+slide.ng is an independent open-source project. It is not affiliated with or endorsed by the Angular team or Google, or by Slidev. Angular is a trademark of Google LLC; Slidev is a project of its own maintainers. The names are used only to describe what the themes are based on. This is a plain notice, not legal advice.
