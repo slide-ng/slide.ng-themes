@@ -23,6 +23,7 @@
   --adev-septenary: #f6f5f6;
   --adev-octonary: #fbfbfb;
   --adev-page: white;
+  --adev-code-bg: #fff;
   --adev-hero: radial-gradient(circle at 60% bottom, #e90464 20%, #8514f5 100%);
   --adev-on-hero: #fff;
 }
@@ -52,6 +53,7 @@ html.dark,
   --adev-septenary: #232125;
   --adev-octonary: #151417;
   --adev-page: #0f0f11;
+  --adev-code-bg: #24292e;
 }
 
 :root,
@@ -69,6 +71,11 @@ html.dark,
     var(--adev-vivid-pink),
     var(--adev-electric-violet)
   );
+  --adev-grad-purple-blue-h: linear-gradient(
+    90deg,
+    var(--adev-electric-violet),
+    var(--adev-bright-blue)
+  );
   --adev-grad-purple-blue-v: linear-gradient(
     0deg,
     var(--adev-electric-violet),
@@ -85,7 +92,7 @@ html.dark,
   --adev-code-ink: color-mix(in srgb, var(--adev-hot-pink) 85%, var(--adev-full));
   --adev-subtle-purple: color-mix(in srgb, var(--adev-bright-blue) 8%, var(--adev-page));
   --slidev-theme-primary: var(--adev-electric-violet);
-  --slidev-code-background: var(--adev-octonary);
+  --slidev-code-background: var(--adev-code-bg);
   --slidev-code-foreground: var(--adev-primary);
   --slidev-code-tab-text-color: var(--adev-tertiary);
   --slidev-code-tab-active-text-color: var(--adev-primary);

@@ -5,7 +5,7 @@ import { Component, input } from '@angular/core';
   host: { class: 'adev-code-card' },
   template: `
     <header class="adev-code-card-header">
-      <span>{{ title() }}</span>
+      <span class="adev-code-card-title">{{ title() }}</span>
       @if (label()) {
         <span class="adev-code-card-label">{{ label() }}</span>
       }
