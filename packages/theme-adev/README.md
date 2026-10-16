@@ -20,7 +20,7 @@ This theme is inspired by angular.dev. It is not an official Angular theme, and 
 
 ## Light and dark
 
-Both schemes are complete and follow angular.dev's light and dark: every layout, component, callout tint, gradient, border and code colour has a variant for each. The theme has its own switch, a small sun or moon button in the top right corner of every slide (`aria-label` "Switch slide colour scheme", a toggle button that works from the keyboard). It only recolours the slides: the slide.ng dock, its menus and the page colour schema (`colorSchema`, the sun button of the dock) are not touched, and the theme does not react to them.
+Both schemes are complete and follow angular.dev's light and dark: every layout, component, alert tint, gradient, border and code colour has a variant for each. The theme has its own switch, a small sun or moon button in the top right corner of every slide (`aria-label` "Switch slide colour scheme", a toggle button that works from the keyboard). It only recolours the slides: the slide.ng dock, its menus and the page colour schema (`colorSchema`, the sun button of the dock) are not touched, and the theme does not react to them.
 
 The scheme is an attribute on the page, `data-adev-scheme="light|dark"`. The first value is the choice stored in `localStorage` (key `adev-scheme`), else the system preference, else light, so `slide-ng export --dark` starts dark. Every change is stored, and the presenter and the main window follow each other. The button is not drawn in print, export, overview or the next-slide preview, but those use the same scheme. The hero panels (`cover`, `end`, the picture side of the image layouts) look the same in both, as on angular.dev. The tests check the layouts, components, code colours and text contrast in both schemes by setting the attribute, and that the button leaves the dock alone.
 
@@ -34,19 +34,17 @@ Every component is a tag you write in the Markdown of a slide. A tag that holds 
 
 ### Alerts
 
-`<adev-alert kind="note">` with nine kinds: `note`, `tip`, `todo`, `question`, `summary`, `tldr`, `critical`, `important` and `helpful`. `title="..."` replaces the label, `bare` drops it.
+`<adev-alert kind="note">` with ten kinds: `note`, `tip`, `todo`, `question`, `summary`, `tldr`, `warning`, `critical`, `important` and `helpful`. `title="..."` replaces the label, `bare` drops it.
 
 ```md
 <adev-alert kind="tip" title="Handy">Use `computed()` for derived state.</adev-alert>
 ```
 
-A paragraph that starts with a kind in capitals, a colon and a space becomes an alert too (the kind is any of the nine, in capitals). The alert ends at the blank line, and braces are safe.
+A paragraph that starts with a kind in capitals, a colon and a space becomes an alert too (the nine angular.dev kinds, in capitals; `warning` is only available as a tag). The alert ends at the blank line, and braces are safe.
 
 ```md
 NOTE: A paragraph that starts with the kind becomes an **alert**.
 ```
-
-`<adev-callout type="warning" title="...">` is the older callout. Types: `note`, `tip`, `important`, `warning`, `critical`.
 
 ### Pills
 
@@ -174,7 +172,7 @@ Headings, tables, links (external links get an icon) and horizontal rules are st
 ## What is different
 
 - The Angular logo, the wordmark and the mascot are not included. Decks that use them must credit Angular (CC BY 4.0) and follow the press kit.
-- Icons in callouts are drawn as SVG paths for this package; angular.dev uses the Material Symbols font.
+- Icons in alerts are drawn as SVG paths for this package; angular.dev uses the Material Symbols font.
 - Fonts load from the provider only 400 and 500 weights (one list covers all three families), so bold text is the medium weight.
 
 See the NOTICE file for the credits and licences. `examples/adev.md` in the themes repository shows every layout and component, and the slide button switches it between light and dark.

@@ -5,7 +5,7 @@ This theme is inspired by angular.dev, the Angular documentation site. It is not
 theme. slide.ng is a community project and is not affiliated with or endorsed by Google or the Angular team.
 
 The colour tokens (the grey scale, the accent colours, their dark mode mixes and the gradients), the type
-scale, the corner radius and the look of the callouts, cards, code blocks, buttons, steps and tables follow
+scale, the corner radius and the look of the alerts, cards, code blocks, buttons, steps and tables follow
 the styles of the Angular repository (https://github.com/angular/angular, folder adev/shared-docs/styles).
 The CSS and the Angular components in this package are new code; the icons and the decorative circles are
 drawn for this package. No image, icon font or other file of angular.dev was copied.
