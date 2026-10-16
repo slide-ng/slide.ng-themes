@@ -74,6 +74,7 @@ export default class AdevGlobalTop {
 
   toggle() {
     const next: Scheme = this.scheme() === 'dark' ? 'light' : 'dark';
+    this.scheme.set(next);
     root.dataset['adevScheme'] = next;
     try {
       localStorage.setItem(KEY, next);
