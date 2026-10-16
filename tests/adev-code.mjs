@@ -1,7 +1,7 @@
 // Browser test of the code family of the adev theme: prefer and avoid, line numbers, highlights, diff lines, file tabs,
 // code from a file and the copy button, in the light and the dark scheme (see README: SLIDE_NG_DIR, default ../slide.ng).
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readdirSync } from 'node:fs';
+import { existsSync, mkdtempSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -16,7 +16,8 @@ const { launch, reporter, serve } = await import(
 );
 const { makeContext } = await import(pathToFileURL(join(core, 'tests/e2e/helpers.mjs')).href);
 
-const SLIDES = 7;
+// Slides of examples/adev.md, in the order: fences, components, lines, diff, tabs, snippet, code card.
+const SLIDES = [25, 26, 27, 28, 29, 30, 19];
 const GREEN = 'var(--adev-super-green)';
 const RED = 'var(--adev-hot-red)';
 const header = (c) => `color-mix(in srgb, ${c} 10%, var(--adev-page))`;
@@ -122,7 +123,7 @@ const env = {
   ...process.env,
   CHROME_PATH: process.env.CHROME_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
 };
-const deck = join(root, 'examples', 'adev-code.md');
+const deck = join(root, 'examples', 'adev.md');
 const dist = join(scratch, 'site');
 if (!existsSync(join(root, 'node_modules/@slide-ng/theme-adev')))
   throw new Error('Run npm install first: it links the packages into node_modules/@slide-ng.');
@@ -158,13 +159,8 @@ try {
   const channels = (colour) => colour.match(/[\d.]+/g).map(Number);
 
   const pages = [];
-  for (let n = 1; n <= SLIDES; n++) pages.push(await open(n));
+  for (const n of SLIDES) pages.push(await open(n));
   const [fences, components, lines, diff, tabs, snippet, card] = pages;
-
-  t.ok(
-    'the deck has one slide per feature',
-    Number(/slide 1\/(\d+)/.exec(await ctx.hud(fences))?.[1]) === SLIDES,
-  );
 
   // 1. prefer and avoid fences
   t.ok(
@@ -299,7 +295,7 @@ try {
   await card.waitForTimeout(200);
   t.ok(
     'copy: the click copies the code',
-    (await card.evaluate(() => window.copied.at(-1) ?? '')).includes('export const answer = 42;'),
+    (await card.evaluate(() => window.copied.at(-1) ?? '')).includes('export class App'),
   );
   t.ok(
     'copy: the button says it copied',
@@ -392,34 +388,6 @@ try {
   for (const p of pages) await p.close();
   t.ok('no console errors or warnings', ctx.problems.length === 0, JSON.stringify(ctx.problems));
   server.close();
-
-  const out = join(scratch, 'png');
-  mkdirSync(out, { recursive: true });
-  execFileSync(
-    process.execPath,
-    [
-      bin,
-      'export',
-      deck,
-      '--dist',
-      dist,
-      '--format',
-      'png',
-      '--range',
-      '1',
-      '--scale',
-      '1',
-      '--output',
-      'shots',
-    ],
-    { cwd: out, env, stdio: 'pipe' },
-  );
-  const files = readdirSync(join(out, 'shots'));
-  t.ok(
-    'png export of the prefer and avoid slide writes one file',
-    files.length === 1,
-    files.join(),
-  );
 } finally {
   await browser.close();
 }

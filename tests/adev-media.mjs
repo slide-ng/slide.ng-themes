@@ -1,4 +1,4 @@
-// Browser test of the adev media components (tabs, images, video, Mermaid) against examples/adev-media.md.
+// Browser test of the adev media components (tabs, images, video, Mermaid) against examples/adev.md.
 // It builds the deck with the slide.ng command line (SLIDE_NG_DIR, default ../slide.ng), opens every slide in Chromium,
 // switches data-adev-scheme on <html> and checks computed colours, keyboard use, print output and WCAG contrast.
 import { execFileSync } from 'node:child_process';
@@ -115,14 +115,10 @@ const env = {
   CHROME_PATH: process.env.CHROME_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
 };
 const dist = join(scratch, 'site');
-execFileSync(
-  process.execPath,
-  [bin, 'build', join(root, 'examples/adev-media.md'), '--out', dist],
-  {
-    stdio: 'inherit',
-    env,
-  },
-);
+execFileSync(process.execPath, [bin, 'build', join(root, 'examples/adev.md'), '--out', dist], {
+  stdio: 'inherit',
+  env,
+});
 
 const browser = await launch();
 const { server, port } = await serve(dist);
@@ -138,8 +134,10 @@ const prepare = async (page) => {
     route.fulfill({ status: 200, contentType: 'text/html', body: '<!doctype html><p>video</p>' });
   });
 };
+// The media slides are slides 31 to 38 of examples/adev.md.
+const FIRST = 31;
 const open = (n, scheme = 'light') =>
-  ctx.open(`/${n}`, sized, async (page) => {
+  ctx.open(`/${n + FIRST - 1}`, sized, async (page) => {
     await prepare(page);
     await page.addInitScript((s) => localStorage.setItem('adev-scheme', s), scheme);
   });
@@ -169,7 +167,6 @@ try {
   // 1. Tabs
   {
     const page = await open(1);
-    t.ok('the deck has 8 slides', /slide 1\/8/.test(await ctx.hud(page)), await ctx.hud(page));
     t.ok(
       'tabs: a tablist with three tabs',
       (await page.locator('[role=tablist] [role=tab]').count()) === 3,
@@ -222,7 +219,7 @@ try {
     t.ok('tabs: End selects the last tab', (await selectedLabels(page)).join() === 'Some text');
     t.ok(
       'tabs: the arrow keys did not move the slide',
-      ctx.pathOf(page) === '/1' && /slide 1\//.test(await ctx.hud(page)),
+      ctx.pathOf(page) === `/${FIRST}` && new RegExp(`slide ${FIRST}/`).test(await ctx.hud(page)),
     );
     await page.getByRole('tab', { name: 'npm', exact: true }).click();
     for (const [scheme, c] of Object.entries(SCHEMES)) {
@@ -278,7 +275,7 @@ try {
       'tabs clicks: another click shows the third tab',
       (await selectedLabels(page)).join() === 'React',
     );
-    t.ok('tabs clicks: still on the same slide', ctx.pathOf(page) === '/2');
+    t.ok('tabs clicks: still on the same slide', ctx.pathOf(page) === `/${FIRST + 1}`);
     await ctx.press(page, 'ArrowLeft');
     t.ok(
       'tabs clicks: going back shows the second tab',

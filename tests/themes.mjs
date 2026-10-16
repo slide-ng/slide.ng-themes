@@ -190,7 +190,7 @@ const THEMES = {
     png: { slide: 2, check: (p) => p[0] === 74 && p[1] === 111 && p[2] === 165 },
   },
   adev: {
-    dark: false,
+    dark: true,
     fontUrl: ['Inter', 'Inter+Tight', 'DM+Mono', 'wght@400'],
     fonts: { sans: 'Inter', mono: 'DM Mono' },
     slides: [
@@ -234,10 +234,19 @@ const THEMES = {
       ['adev-statement', ['adev-statement', 'textAlign', 'center']],
       [
         'adev-default',
+        ['.adev-alert-note', 'borderLeftWidth', '3px'],
+        ['.adev-alert-critical svg', 'width', /^22(\.\d+)?px$/],
+        ['adev-alert', 'backgroundColor', /^(rgb|color)\(/],
+      ],
+      [
+        'adev-default',
         ['adev-callout', 'borderLeftWidth', '3px'],
-        ['.adev-callout-critical svg', 'width', /^22\.\d+px$/],
+        ['.adev-callout-warning svg', 'width', /^22\.\d+px$/],
         ['adev-callout', 'backgroundColor', /^(rgb|color)\(/],
       ],
+      ['adev-default'],
+      ['adev-default'],
+      ['adev-default'],
       [
         'adev-default',
         ['adev-card-grid', 'gridTemplateColumns', /^(\d+(\.\d+)?px ?){3}$/],
@@ -255,6 +264,7 @@ const THEMES = {
         ['.adev-steps ol', 'listStyleType', 'none'],
         ['.adev-button-primary', 'borderTopColor', 'rgba(0, 0, 0, 0)'],
         ['.adev-button + .adev-button', 'marginInlineStart', '12px'],
+        ['.flex .adev-button + .adev-button', 'marginInlineStart', '12px'],
       ],
       [
         'adev-default',
@@ -262,6 +272,8 @@ const THEMES = {
         ['adev-default blockquote', 'borderLeftWidth', '3px'],
         ['adev-default td code', 'fontFamily', /^"DM Mono"/],
       ],
+      ['adev-default'],
+      ['adev-default'],
       [
         'adev-default',
         ['.slidev-code', 'backgroundColor', WHITE],
@@ -270,17 +282,14 @@ const THEMES = {
         ['.slidev-code-block-title', 'backgroundClip', /^text/],
       ],
       ['adev-default', ['.slidev-code', 'backgroundColor', WHITE]],
-      [
-        'adev-default',
-        ['.adev-button + .adev-button', 'marginInlineStart', '12px'],
-        ['.flex .adev-button + .adev-button', 'marginInlineStart', '12px'],
-      ],
+      ...Array.from({ length: 14 }, () => ['adev-default']),
       [
         'adev-end',
         ['adev-end', 'backgroundImage', /gradient/],
         ['adev-end', 'textAlign', 'center'],
       ],
     ],
+    total: 39,
     // The same slides with the page switched to dark (the colour-schema switch): [slide, checks...]
     darkChecks: [
       [1, ['adev-cover', 'backgroundImage', /gradient/]],
@@ -296,20 +305,21 @@ const THEMES = {
       [9, ['adev-quote', 'backgroundColor', ADEV_DARK]],
       [10, ['adev-fact', 'backgroundColor', ADEV_DARK]],
       [11, ['adev-statement', 'backgroundColor', ADEV_DARK]],
-      [12, ['adev-callout', 'backgroundColor', /^(rgb|color)\(/]],
-      [13, ['adev-card', 'backgroundColor', ADEV_DARK]],
+      [12, ['adev-alert', 'backgroundColor', /^(rgb|color)\(/]],
+      [13, ['adev-callout', 'backgroundColor', /^(rgb|color)\(/]],
+      [17, ['adev-card', 'backgroundColor', ADEV_DARK]],
       [
-        15,
+        19,
         ['.adev-code-card-header', 'backgroundColor', /^(rgb|color)\(/],
         ['.adev-button + .adev-button', 'marginInlineStart', '12px'],
+        ['.flex .adev-button + .adev-button', 'marginInlineStart', '12px'],
       ],
-      [17, ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
-      [18, ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
-      [19, ['.flex .adev-button + .adev-button', 'marginInlineStart', '12px']],
-      [20, ['adev-end', 'backgroundImage', /gradient/]],
+      [23, ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
+      [24, ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
+      [39, ['adev-end', 'backgroundImage', /gradient/]],
     ],
     tokens: {
-      17: {
+      23: {
         light: {
           export: rgb(215, 58, 73),
           "'app-user'": rgb(3, 47, 98),
@@ -329,7 +339,7 @@ const THEMES = {
           h2: rgb(133, 232, 157),
         },
       },
-      18: {
+      24: {
         light: { '@for': rgb(215, 58, 73), "'ok'": rgb(3, 47, 98), item: rgb(0, 92, 197) },
         dark: {
           '@defer': rgb(249, 117, 131),
@@ -422,8 +432,8 @@ try {
       if (i === 0) {
         const total = Number(/slide 1\/(\d+)/.exec(await ctx.hud(page))?.[1]);
         t.ok(
-          `${name}: the deck has ${spec.slides.length} slides, one per layout`,
-          total === spec.slides.length,
+          `${name}: the deck has ${spec.total ?? spec.slides.length} slides`,
+          total === (spec.total ?? spec.slides.length),
           String(total),
         );
         t.ok(
@@ -547,6 +557,7 @@ try {
 
       const page = await ctx.open('/3', sized, routeFonts);
       const lightLook = await look(page);
+      await page.waitForTimeout(600);
       const dockBefore = await dock(page);
       const htmlDark = await page.evaluate(() =>
         document.documentElement.classList.contains('dark'),
@@ -561,6 +572,14 @@ try {
       );
       await button(page).click();
       t.ok('adev: the button switches the slides to dark', (await scheme(page)) === 'dark');
+      await page
+        .waitForFunction(
+          () =>
+            document.querySelector('.adev-scheme-button')?.getAttribute('aria-pressed') === 'true',
+          null,
+          { timeout: 3000 },
+        )
+        .catch(() => {});
       t.ok(
         'adev: the button is pressed in dark',
         (await button(page).getAttribute('aria-pressed')) === 'true',
@@ -576,6 +595,7 @@ try {
         (await page.evaluate(() => document.documentElement.classList.contains('dark'))) ===
           htmlDark,
       );
+      await page.waitForTimeout(600);
       t.ok(
         'adev: the dock keeps its colours',
         (await dock(page)) === dockBefore,
@@ -619,7 +639,7 @@ try {
       );
       await stored.close();
 
-      const callouts = await ctx.open('/12', sized, routeFonts);
+      const callouts = await ctx.open('/13', sized, routeFonts);
       const before = await callouts
         .locator('adev-callout')
         .first()

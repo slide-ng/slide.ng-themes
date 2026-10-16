@@ -1,4 +1,4 @@
-// Browser test of the alerts, pills, API labels, kbd keys and decorative header of the adev theme (examples/adev-alerts.md).
+// Browser test of the alerts, pills, API labels, kbd keys and decorative header of the adev theme (examples/adev.md).
 // Builds the deck, opens each slide, checks the elements, then repeats the colour checks in both schemes
 // (data-adev-scheme on html) with the WCAG contrast of every new surface. `SLIDE_NG_DIR` points at a slide.ng checkout.
 import { execFileSync } from 'node:child_process';
@@ -100,14 +100,10 @@ const env = {
   ...process.env,
   CHROME_PATH: process.env.CHROME_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
 };
-execFileSync(
-  process.execPath,
-  [bin, 'build', join(root, 'examples/adev-alerts.md'), '--out', dist],
-  {
-    stdio: 'inherit',
-    env,
-  },
-);
+execFileSync(process.execPath, [bin, 'build', join(root, 'examples/adev.md'), '--out', dist], {
+  stdio: 'inherit',
+  env,
+});
 
 const browser = await launch();
 try {
@@ -125,7 +121,10 @@ try {
   };
 
   const pages = {};
-  for (let n = 1; n <= 8; n++) pages[n] = await ctx.open(`/${n}`, undefined, routeFonts);
+  // Slides 1 to 8 of this test are these slides of examples/adev.md.
+  const SLIDES = [12, 13, 14, 15, 16, 20, 21, 22];
+  for (const [i, n] of SLIDES.entries())
+    pages[i + 1] = await ctx.open(`/${n}`, undefined, routeFonts);
 
   t.ok('slide 1: nine alerts', (await count(pages[1], 'adev-alert')) === 9);
   t.ok(
