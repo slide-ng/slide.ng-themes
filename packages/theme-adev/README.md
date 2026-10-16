@@ -9,7 +9,7 @@ This theme is inspired by angular.dev. It is not an official Angular theme, and 
 - Tokens: the grey scale (`gray-1000` to `gray-50`), the accent colours (bright blue, electric violet, vivid pink, hot pink, orange red) and the dark mode mixes, as `--adev-*` CSS variables in `styles/tokens.css`. Light and dark follow slide.ng's colour schema (`html.dark`).
 - Fonts (`theme.json`, from the font provider): `Inter` for text, `Inter Tight` for headings, `DM Mono` for code, weights 400 and 500.
 - Gradients: the hero (hot pink to electric violet) on `cover`, `end` and the picture side of `image-left` and `image-right`; the red, pink, purple text gradient on `intro`, `fact` and stat numbers; the pink to purple ring of numbered steps and `adev-button`.
-- Code: a grey panel with a hairline border and a header bar for the file name (` ```ts [app.ts] ` or `<adev-code-card>`). Inline code is hot pink on a light purple tint.
+- Code: the same Shiki themes as angular.dev, `github-light` and `github-dark`, set in `theme.json` (white panel with dark text in light, `#24292e` panel with `#e1e4e8` text in dark, as in angular.dev's `docs-light-mode` and `docs-dark-mode`). A hairline border, 14px DM Mono, and a header bar with the file name in the purple to blue gradient (a fence title such as `[app.ts]`, or `<adev-code-card>`). Inline code is hot pink on a light purple tint.
 - Callouts, cards, buttons, steps, tables and links follow the docs styles.
 
 ## Layouts
@@ -20,7 +20,11 @@ This theme is inspired by angular.dev. It is not an official Angular theme, and 
 
 ## Light and dark
 
-The deck follows the colour schema as usual (`colorSchema: auto | light | dark`). One slide can be forced with `class: dark` or `class: light` in its frontmatter; for `two-cols` use `layoutClass: dark`.
+Both schemes are complete and follow angular.dev's light and dark: every layout, component, callout tint, gradient, border and code colour has a variant for each. The deck follows the colour schema as usual (`colorSchema: auto | light | dark`), so the colour-schema switch and the operating system preference both work. One slide can be forced with `class: dark` or `class: light` in its frontmatter, whatever the page is set to; for `two-cols` use `layoutClass: dark`. The hero panels (`cover`, `end`, the picture side of the image layouts) look the same in both, as on angular.dev. The tests check the contrast of the text colours in light, dark and on a forced slide.
+
+## Angular support built in
+
+Angular code is highlighted out of the box, with no setup file: the theme loads the `angular-ts` and `angular-html` grammars (`setup/shiki.ts`) and adds the fence names `ng-ts`, `ng-html` and `angular` (`ng` works in slide.ng already). `@Component` decorators with inline templates, control flow (`@if`, `@for`, `@defer`, `@switch`), bindings, `{{ }}` and pipes are coloured like on angular.dev. A deck that sets its own `codeAliases` replaces these names.
 
 ## Components
 
