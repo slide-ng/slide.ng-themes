@@ -6,18 +6,65 @@ which are licensed under the MIT License:
 
   Copyright (c) 2021 Slidev.js Team
 
-Original designs:
+Original designs (each package also carries its own LICENSE and NOTICE):
 
 - seriph: Anthony Fu (https://github.com/antfu)
 - shibainu and bricks: iiiiiiinès (https://github.com/iiiiiiines)
 - apple-basic: Jeremy Meissner (https://github.com/JeremyMeissner)
 
-What is ported: the layout names and slots, the CSS values, the font settings and the eleven
-polygon shapes of bricks. The Angular components are new code.
+What is ported: the layout names and slots, the CSS values, and the font settings. The Angular components are new code. The eleven polygon shapes
+of bricks are drawn for slide.ng and share no path data with the originals.
 
 Assets: the images and other assets of the Slidev themes are licensed CC BY-NC-SA 4.0
 (non-commercial). None of them was copied or embedded in this repository. Where an original draws a
 picture, the port draws its own CSS gradients. Each package README says what is different.
 
-The full text of the MIT License applies to the Slidev parts as it does to this project;
-see LICENSE.
+The MIT License of the Slidev themes, reproduced in full:
+
+MIT License
+
+Copyright (c) 2021 Slidev.js Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Slidev core (https://github.com/slidevjs/slidev) is credited for the theme contract (named layouts and
+slots) that these themes follow. Its MIT License:
+
+MIT License
+
+Copyright (c) 2020-PRESENT Anthony Fu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
