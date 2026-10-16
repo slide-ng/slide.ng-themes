@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - run: npm install -g npm@latest
+      - run: npm ci
+
+      - name: The tag matches every package version
+        run: |
+          node -e "const fs = require('fs'); const bad = fs.readdirSync('packages').filter((d) => 'v' + require('./packages/' + d + '/package.json').version !== process.env.GITHUB_REF_NAME); if (bad.length) { console.error('Tag ' + process.env.GITHUB_REF_NAME + ' does not match: ' + bad.join(', ')); process.exit(1); }"
+
+      - run: npm run format:check
+      - run: node --test tests/*.test.mjs
+
+      - run: npm publish --workspaces --provenance --access public
