@@ -2,7 +2,7 @@
 # type(scope): summary
 #
 #   type   feat fix perf refactor test docs style build ci chore revert
-#   scope  seriph shibainu bricks apple-basic packages examples tests docs deps ci
+#   scope  seriph shibainu bricks apple-basic adev packages examples tests docs deps ci
 #          (or leave it out)
 #   summary  imperative, lower case, no period, 72 characters at most
 #

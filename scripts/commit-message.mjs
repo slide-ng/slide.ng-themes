@@ -31,6 +31,7 @@ export const SCOPES = [
   'shibainu',
   'bricks',
   'apple-basic',
+  'adev',
   'packages',
   'examples',
   'tests',

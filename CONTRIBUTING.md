@@ -39,7 +39,7 @@ Small files, plain comments, few dependencies. Prettier decides the formatting (
 `type(scope): summary`, imperative, lower case, no period, 72 characters at most, no trailer lines. An optional body, after a blank line, says why.
 
 - Types: `feat`, `fix`, `perf`, `refactor`, `test`, `docs`, `style`, `build`, `ci`, `chore`, `revert`.
-- Scopes: `seriph`, `shibainu`, `bricks`, `apple-basic`, `packages`, `examples`, `tests`, `docs`, `deps`, `ci`. Leave the scope out when a change spans several parts.
+- Scopes: `seriph`, `shibainu`, `bricks`, `apple-basic`, `adev`, `packages`, `examples`, `tests`, `docs`, `deps`, `ci`. Leave the scope out when a change spans several parts.
 
 Pull requests are squash merged, so the pull request title must follow the same form. You can check a message yourself:
 

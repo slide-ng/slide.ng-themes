@@ -11,6 +11,7 @@ body:
         - shibainu
         - bricks
         - apple-basic
+        - adev
         - More than one theme
         - Not a theme (tests, tooling or documentation)
     validations:
