@@ -24,7 +24,7 @@
     "NOTICE"
   ],
   "peerDependencies": {
-    "slide-ng": "*"
+    "@slide-ng/core": "*"
   },
   "publishConfig": {
     "access": "public"

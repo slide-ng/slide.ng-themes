@@ -25,7 +25,7 @@ for (const name of names) {
     it('has the package fields slide.ng and npm need', () => {
       assert.equal(pkg.name, `@slide-ng/theme-${name}`);
       assert.equal(pkg.license, 'MIT');
-      assert.ok(pkg.peerDependencies['slide-ng']);
+      assert.ok(pkg.peerDependencies['@slide-ng/core']);
       assert.deepEqual(pkg.keywords, ['slide-ng-theme', 'slide-ng']);
       assert.ok(pkg.files.includes('layouts') && pkg.files.includes('theme.json'));
       assert.ok(pkg.files.every((f) => !f.includes('..')));
