@@ -1,15 +1,17 @@
 {
   "name": "@slide-ng/theme-shibainu",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A dark theme in brown and tan: the shibainu theme of Slidev, ported to slide.ng",
   "license": "MIT",
-  "homepage": "https://github.com/slide-ng/themes#readme",
+  "homepage": "https://github.com/slide-ng/slide.ng-themes/tree/main/packages/theme-shibainu#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slide-ng/themes.git",
+    "url": "git+https://github.com/slide-ng/slide.ng-themes.git",
     "directory": "packages/theme-shibainu"
   },
-  "bugs": "https://github.com/slide-ng/themes/issues",
+  "bugs": {
+    "url": "https://github.com/slide-ng/slide.ng-themes/issues"
+  },
   "keywords": [
     "slide-ng-theme",
     "slide-ng"
