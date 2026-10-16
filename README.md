@@ -51,5 +51,19 @@ Layout names, slots, CSS values and font settings follow the Slidev themes, whic
 The designs are by Anthony Fu (seriph), iiiiiiinès (shibainu, bricks) and Jeremy Meissner (apple-basic). The Angular code is new.
 The images of the originals are CC BY-NC-SA 4.0 and are not copied here; the ports draw CSS gradients instead (see [NOTICE](NOTICE)).
 
-This repository is MIT licensed, see [LICENSE](LICENSE). See also [CONTRIBUTING.md](CONTRIBUTING.md),
-[SECURITY.md](SECURITY.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+This repository is MIT licensed, see [LICENSE](LICENSE).
+
+## Related repositories
+
+- [slide.ng](https://github.com/slide-ng/slide.ng): the presentation tool itself.
+- [slide.ng-themes](https://github.com/slide-ng/slide.ng-themes): the official themes (this repository).
+- [slide.ng-starter](https://github.com/slide-ng/slide.ng-starter): a starter deck to copy.
+- [slide.ng-docs](https://github.com/slide-ng/slide.ng-docs): the documentation site.
+- [slide.ng-docker](https://github.com/slide-ng/slide.ng-docker): a container image for building and serving decks.
+- [slide.ng-vscode](https://github.com/slide-ng/slide.ng-vscode): a Visual Studio Code extension.
+
+These addresses are placeholders until the repositories are published.
+
+## Contributing
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md). Changes follow the [Code of Conduct](CODE_OF_CONDUCT.md); security problems go through [SECURITY.md](SECURITY.md). Changes are listed in [CHANGELOG.md](CHANGELOG.md).
