@@ -16,7 +16,6 @@
   font-size: 0.95rem;
   line-height: 1.5;
 }
-.dark .adev-callout,
 html.dark .adev-callout {
   background: color-mix(in srgb, var(--accent) 12%, var(--adev-page));
 }

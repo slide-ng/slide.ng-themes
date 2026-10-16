@@ -40,12 +40,3 @@
 .slidev-layout .slidev-code-group-blocks .slidev-code-wrapper {
   border: 0;
 }
-
-:root .dark .shiki,
-:root .dark .shiki span {
-  color: var(--shiki-dark, inherit);
-}
-:root.dark .light .shiki,
-:root.dark .light .shiki span {
-  color: var(--shiki-light, inherit);
-}

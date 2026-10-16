@@ -1,5 +1,4 @@
-:root,
-.light {
+:root {
   color-scheme: light;
   --adev-bright-blue: oklch(51.01% 0.274 263.83);
   --adev-indigo-blue: oklch(51.64% 0.229 281.65);
@@ -28,8 +27,7 @@
   --adev-on-hero: #fff;
 }
 
-html.dark,
-.dark {
+html.dark {
   color-scheme: dark;
   --adev-bright-blue: color-mix(in srgb, oklch(51.01% 0.274 263.83), white 60%);
   --adev-indigo-blue: color-mix(in srgb, oklch(51.64% 0.229 281.65), white 70%);
@@ -57,9 +55,7 @@ html.dark,
 }
 
 :root,
-html.dark,
-.light,
-.dark {
+html.dark {
   --adev-grad-brand: linear-gradient(
     90deg,
     var(--adev-orange-red),
