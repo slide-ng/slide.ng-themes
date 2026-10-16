@@ -19,7 +19,9 @@
     "components",
     "styles",
     "public",
-    "theme.json"
+    "theme.json",
+    "LICENSE",
+    "NOTICE"
   ],
   "peerDependencies": {
     "slide-ng": "*"

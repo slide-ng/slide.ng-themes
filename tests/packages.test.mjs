@@ -30,6 +30,13 @@ for (const name of names) {
       assert.ok(pkg.files.includes('layouts') && pkg.files.includes('theme.json'));
       assert.ok(pkg.files.every((f) => !f.includes('..')));
     });
+    it('ships its own LICENSE and NOTICE, listed in files', () => {
+      for (const file of ['LICENSE', 'NOTICE']) {
+        assert.ok(existsSync(join(dir, file)), file);
+        assert.ok(pkg.files.includes(file), `files has ${file}`);
+      }
+      assert.match(readFileSync(join(dir, 'NOTICE'), 'utf8'), /Permission is hereby granted/);
+    });
     it('ships theme.json, styles and a README', () => {
       for (const file of ['theme.json', 'styles/index.css', 'README.md'])
         assert.ok(existsSync(join(dir, file)), file);
