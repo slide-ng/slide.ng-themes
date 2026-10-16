@@ -44,8 +44,16 @@ jobs:
       - run: npm ci
         working-directory: core
 
-      - name: Build the adev deck
-        run: node core/bin/slide-ng.mjs build examples/adev.md --base "/${GITHUB_REPOSITORY#*/}/" --out dist-pages
+      - name: Build the five showcase decks
+        run: |
+          repo="${GITHUB_REPOSITORY#*/}"
+          mkdir -p dist-pages
+          for name in adev seriph shibainu bricks apple-basic; do
+            awk 'NR == 1 { print; print "routerMode: hash"; next } { print }' "examples/$name.md" > "examples/_pages-$name.md"
+            node core/bin/slide-ng.mjs build "examples/_pages-$name.md" --base "/$repo/$name/" --out "dist-pages/$name"
+            rm "examples/_pages-$name.md"
+          done
+          cp pages/index.html dist-pages/index.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
