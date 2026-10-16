@@ -17,6 +17,7 @@
   "files": [
     "layouts",
     "components",
+    "setup",
     "styles",
     "public",
     "theme.json",

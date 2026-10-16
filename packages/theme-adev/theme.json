@@ -6,6 +6,14 @@
       "serif": "Inter Tight",
       "mono": "DM Mono",
       "weights": "400, 500"
+    },
+    "shiki": {
+      "themes": { "light": "github-light", "dark": "github-dark" }
+    },
+    "codeAliases": {
+      "ng-ts": "angular-ts",
+      "ng-html": "angular-html",
+      "angular": "angular-ts"
     }
   }
 }
