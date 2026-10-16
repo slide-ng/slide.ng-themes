@@ -5,6 +5,8 @@
 
 # slide.ng themes
 
+Live demo of the `adev` theme: <https://slide-ng.github.io/slide.ng-themes/>
+
 The official themes of [slide.ng](https://github.com/slide-ng/slide.ng), one npm package each. Four are ports of the official
 [Slidev themes](https://github.com/slidevjs/themes), rebuilt for slide.ng's theme contract (layouts, components and CSS as Angular code); `adev` is new and inspired by [angular.dev](https://angular.dev).
 

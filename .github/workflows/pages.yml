@@ -1,0 +1,55 @@
+# Builds the adev showcase deck and publishes it to GitHub Pages at https://slide-ng.github.io/slide.ng-themes/
+# Turn it on once: Settings > Pages > Source: GitHub Actions.
+name: Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - examples/**
+      - packages/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: slide-ng/slide.ng
+          path: core
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - run: npm ci
+      - run: npm ci
+        working-directory: core
+
+      - name: Build the adev deck
+        run: node core/bin/slide-ng.mjs build examples/adev.md --base "/${GITHUB_REPOSITORY#*/}/" --out dist-pages
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist-pages
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
