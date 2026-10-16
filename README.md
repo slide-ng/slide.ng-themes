@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/readme-banner-dark.png">
+  <img alt="slide.ng" src="assets/readme-banner-light.png" width="800">
+</picture>
+
 # slide.ng themes
 
 The official themes of [slide.ng](https://github.com/slide-ng/slide.ng), one npm package each. They are ports of the official
