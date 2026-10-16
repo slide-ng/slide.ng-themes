@@ -1,0 +1,64 @@
+name: Bug report
+description: A theme looks wrong, a layout does not work, or a package is broken
+labels: [bug, needs triage]
+body:
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      options:
+        - seriph
+        - shibainu
+        - bricks
+        - apple-basic
+        - More than one theme
+        - Not a theme (tests, tooling or documentation)
+    validations:
+      required: true
+  - type: input
+    id: layout
+    attributes:
+      label: Layout
+      description: The layout of the slide that shows the problem, for example `cover` or `intro-image-right`.
+      placeholder: cover
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Say what you did, what you expected and what you got instead. A screenshot helps.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal slides.md
+      description: The smallest deck that shows the problem. Paste it, or link a repository.
+      render: markdown
+  - type: input
+    id: versions
+    attributes:
+      label: Theme package version and slide.ng version
+      placeholder: '@slide-ng/theme-seriph 0.1.0, slide.ng 0.1.0 (or a commit)'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Node.js version, operating system and browser
+      placeholder: Node 22.23.3, Ubuntu 24.04, Chromium 140
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console or terminal output
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched the existing issues.
+          required: true
+        - label: The problem is in the theme, not in slide.ng itself (those belong in the slide.ng repository).
+          required: true

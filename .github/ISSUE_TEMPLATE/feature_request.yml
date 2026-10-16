@@ -1,0 +1,48 @@
+name: Feature request
+description: Suggest a change to a theme, a new layout, or a new theme
+labels: [feature, needs triage]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of request is it
+      options:
+        - A change to an existing theme
+        - A new layout for an existing theme
+        - A new theme (a port of a Slidev theme, or an original one)
+        - Tests or tooling
+        - Something else
+    validations:
+      required: true
+  - type: input
+    id: theme
+    attributes:
+      label: Theme and layout
+      description: Which theme and which layout this is about, if any.
+      placeholder: bricks, items
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What can you not do today, or what is hard? A talk you are giving is a good example.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you would like
+      description: How it could look or work. For a port, link the original theme and say what license it has.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Other ways you tried
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you submit
+      options:
+        - label: I searched the existing issues.
+          required: true
+        - label: I might be able to help build it.
