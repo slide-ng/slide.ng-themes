@@ -1,0 +1,348 @@
+// Browser test of the four themes against a slide.ng checkout (see README: SLIDE_NG_DIR, default ../slide.ng).
+// Each deck in examples/ uses `theme: <name>`, found in node_modules/@slide-ng/theme-<name> (npm workspaces link the packages there)
+// and has a slide for every layout of the theme. For each theme: build it with the slide.ng command line, open every slide in
+// Chromium, check the layout element, a distinguishing computed style, the fonts asked from the provider, and that one slide
+// exports to a PNG. `node tests/themes.mjs bricks` runs one theme.
+import { execFileSync } from 'node:child_process';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
+const root = resolve(import.meta.dirname, '..');
+const core = resolve(process.env.SLIDE_NG_DIR ?? join(root, '../slide.ng'));
+const bin = join(core, 'bin/slide-ng.mjs');
+if (!existsSync(bin))
+  throw new Error(`slide.ng was not found at ${core}. Set SLIDE_NG_DIR to a checkout of slide.ng.`);
+const { launch, reporter, serve } = await import(
+  pathToFileURL(join(core, 'tests/e2e/browser.mjs')).href
+);
+const { makeContext } = await import(pathToFileURL(join(core, 'tests/e2e/helpers.mjs')).href);
+
+const WHITE = 'rgb(255, 255, 255)';
+const rgb = (r, g, b) => `rgb(${r}, ${g}, ${b})`;
+const [TAN, MID, BROWN, DARK, LIGHT] = [
+  rgb(191, 146, 107),
+  rgb(140, 102, 69),
+  rgb(115, 66, 38),
+  rgb(64, 35, 18),
+  rgb(235, 238, 242),
+];
+
+// slides[n-1] = [layout tag, [selector, css property, expected value or RegExp]...]. A selector is looked up inside the slide.
+const THEMES = {
+  seriph: {
+    dark: false,
+    fontUrl: ['PT+Serif', 'PT+Mono', 'ital', '700'],
+    fonts: { sans: 'PT Serif', mono: 'PT Mono' },
+    slides: [
+      [
+        'seriph-cover',
+        ['seriph-cover', 'backgroundImage', /gradient/],
+        ['seriph-cover', 'color', WHITE],
+        ['seriph-cover', 'textAlign', 'center'],
+      ],
+      ['sn-intro', ['h1', 'fontSize', '60px']],
+      ['sn-default', ['h1', 'color', rgb(93, 131, 146)], ['pre.shiki', 'fontFamily', /^"PT Mono"/]],
+      ['sn-section', ['h1', 'color', rgb(93, 131, 146)]],
+      ['sn-statement', ['h1', 'fontWeight', '700']],
+      ['sn-fact', ['h1', 'fontSize', '96px']],
+      ['sn-quote', ['h1', 'color', rgb(93, 131, 146)]],
+    ],
+    png: { slide: 1, check: (p) => p[0] < 200 && p[2] > p[0] },
+  },
+  shibainu: {
+    dark: true,
+    fontUrl: ['Titillium+Web', 'Fira+Code'],
+    fonts: { sans: 'Titillium Web', mono: 'Fira Code' },
+    slides: [
+      [
+        'shibainu-cover',
+        ['shibainu-cover', 'backgroundColor', TAN],
+        ['shibainu-cover', 'color', DARK],
+        ['h1', 'fontSize', '60px'],
+      ],
+      [
+        'shibainu-default',
+        ['shibainu-default', 'backgroundColor', BROWN],
+        ['shibainu-default', 'color', LIGHT],
+        ['shibainu-default > div', 'width', /^(5[0-9]{2}|6[0-9]{2})(\.\d+)?px$/],
+      ],
+      [
+        'shibainu-center',
+        ['shibainu-center', 'backgroundColor', TAN],
+        ['shibainu-center > div', 'textAlign', 'center'],
+      ],
+      ['shibainu-section', ['shibainu-section', 'backgroundColor', BROWN]],
+      [
+        'shibainu-default-2',
+        ['shibainu-default-2', 'backgroundColor', BROWN],
+        ['shibainu-default-2', 'color', LIGHT],
+      ],
+      [
+        'shibainu-default-3',
+        ['shibainu-default-3', 'backgroundColor', BROWN],
+        ['shibainu-default-3 > div.text-center', 'textAlign', 'center'],
+      ],
+      [
+        'shibainu-right',
+        ['shibainu-right', 'backgroundColor', MID],
+        ['shibainu-right > div', 'textAlign', 'right'],
+      ],
+      [
+        'shibainu-section-2',
+        ['shibainu-section-2', 'backgroundColor', TAN],
+        ['shibainu-section-2', 'color', DARK],
+      ],
+      ['shibainu-default-4', ['shibainu-default-4', 'backgroundColor', MID]],
+      ['shibainu-default-5', ['shibainu-default-5', 'backgroundColor', MID]],
+      [
+        'shibainu-default-6',
+        ['shibainu-default-6', 'backgroundColor', DARK],
+        ['shibainu-default-6 > div', 'paddingLeft', /^(1[0-9]{2})(\.\d+)?px$/],
+      ],
+      ['shibainu-default-7', ['shibainu-default-7', 'backgroundColor', DARK]],
+      [
+        'shibainu-section-3',
+        ['shibainu-section-3', 'backgroundColor', DARK],
+        ['h1', 'fontSize', /^(4[0-9]|5[0-9])(\.\d+)?px$/],
+      ],
+      [
+        'shibainu-quote',
+        ['shibainu-quote', 'backgroundColor', MID],
+        ['h1', 'fontSize', /^(6[0-9]|7[0-9])(\.\d+)?px$/],
+      ],
+    ],
+    png: {
+      slide: 2,
+      check: (p) => Math.abs(p[0] - 115) < 4 && Math.abs(p[1] - 66) < 4 && Math.abs(p[2] - 38) < 4,
+    },
+  },
+  bricks: {
+    dark: false,
+    fontUrl: ['Sigmar+One', 'Signika+Negative', 'Fira+Code'],
+    fonts: { sans: 'Signika Negative', serif: 'Sigmar One', mono: 'Fira Code' },
+    slides: [
+      [
+        'bricks-cover',
+        ['bricks-cover', 'backgroundImage', /gradient/],
+        ['bricks-cover h1', 'fontFamily', /^"Sigmar One"/],
+      ],
+      [
+        'bricks-intro',
+        ['bricks-intro polygon-7', 'width', '160px'],
+        ['bricks-intro', 'gridTemplateColumns', /^\d+(\.\d+)?px \d+(\.\d+)?px$/],
+      ],
+      [
+        'bricks-default',
+        ['bricks-default', 'paddingLeft', '88px'],
+        ['bricks-default', 'backgroundImage', /gradient/],
+      ],
+      [
+        'bricks-section',
+        ['bricks-section .bricks-section-right h2', 'fontSize', '24px'],
+        ['bricks-section', 'display', 'grid'],
+      ],
+      [
+        'bricks-items',
+        ['.bricks-items-grid', 'gridTemplateColumns', /^(\d+(\.\d+)?px ?){4}$/],
+        ['bricks-items polygon-1', 'width', '80px'],
+      ],
+      ['bricks-quote', ['bricks-quote', 'textAlign', 'center']],
+      ['bricks-fact', ['bricks-fact h1', 'fontSize', '60px']],
+      ['bricks-statement', ['bricks-statement', 'textAlign', 'center']],
+      ['bricks-blank', ['bricks-blank', 'backgroundImage', 'none']],
+    ],
+    png: { slide: 5, check: (p) => p[2] > p[0] + 50 },
+  },
+  'apple-basic': {
+    dark: false,
+    fontUrl: null, // `local: Helvetica Neue`: nothing is loaded from the provider
+    fonts: { sans: 'Helvetica Neue' },
+    slides: [
+      ['apple-intro', ['h1', 'fontWeight', '700'], ['h1', 'fontSize', '60px']],
+      ['apple-intro-image', ['apple-intro-image', 'backgroundColor', rgb(74, 111, 165)]],
+      [
+        'apple-intro-image-right',
+        ['.apple-photo', 'backgroundColor', rgb(201, 162, 39)],
+        ['apple-intro-image-right', 'gridTemplateColumns', /^\d+(\.\d+)?px \d+(\.\d+)?px$/],
+      ],
+      [
+        'apple-image-right',
+        ['.apple-photo', 'backgroundColor', rgb(107, 143, 113)],
+        ['h2', 'fontWeight', '700'],
+      ],
+      ['sn-default', ['h1', 'fontWeight', '700'], ['ul', 'listStyleType', 'disc']],
+      ['apple-bullets', ['apple-bullets .pt-18', 'paddingTop', '72px']],
+      ['apple-section', ['h1', 'fontWeight', '500']],
+      ['apple-statement', ['apple-statement', 'textAlign', 'center'], ['h1', 'fontWeight', '700']],
+      ['apple-fact', ['h1', 'fontSize', '96px'], ['apple-fact', 'textAlign', 'center']],
+      ['apple-quote', ['apple-quote h1 + p', 'marginLeft', '24px']],
+      [
+        'apple-three-images',
+        ['apple-three-images > div:first-child', 'backgroundColor', rgb(74, 111, 165)],
+        ['apple-three-images .grid > div:last-child', 'backgroundColor', rgb(107, 143, 113)],
+      ],
+    ],
+    png: { slide: 2, check: (p) => p[0] === 74 && p[1] === 111 && p[2] === 165 },
+  },
+};
+
+const only = process.argv[2];
+const names = Object.keys(THEMES).filter((n) => !only || n === only);
+const t = reporter();
+const scratch = mkdtempSync(join(tmpdir(), 'slide-ng-themes-'));
+const env = {
+  ...process.env,
+  CHROME_PATH: process.env.CHROME_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
+};
+
+// The colour of one pixel of a PNG, read back by a browser.
+async function pixel(browser, file) {
+  const page = await browser.newPage();
+  await page.setContent(
+    `<img src="data:image/png;base64,${readFileSync(file).toString('base64')}">`,
+  );
+  const rgba = await page.evaluate(async () => {
+    const img = document.querySelector('img');
+    await img.decode();
+    const c = Object.assign(document.createElement('canvas'), {
+      width: img.naturalWidth,
+      height: img.naturalHeight,
+    });
+    c.getContext('2d').drawImage(img, 0, 0);
+    return [...c.getContext('2d').getImageData(3, 3, 1, 1).data];
+  });
+  await page.close();
+  return rgba;
+}
+
+const browser = await launch();
+try {
+  for (const name of names) {
+    const spec = THEMES[name];
+    const deck = join(root, 'examples', `${name}.md`);
+    const dist = join(scratch, 'site', name);
+    console.log(`\n== ${name}`);
+    if (!existsSync(join(root, 'node_modules/@slide-ng', `theme-${name}`)))
+      throw new Error('Run npm install first: it links the packages into node_modules/@slide-ng.');
+    execFileSync(process.execPath, [bin, 'build', deck, '--out', dist], { stdio: 'inherit', env });
+    const { server, port } = await serve(dist);
+    const ctx = makeContext(`http://localhost:${port}`, browser, t);
+    // The font style sheet comes from the network in a real deck; here the request is recorded and answered with an empty sheet.
+    const fontRequests = [];
+    const routeFonts = async (page) =>
+      page.route('**/fonts.googleapis.com/**', (route) => {
+        fontRequests.push(route.request().url());
+        route.fulfill({ status: 200, contentType: 'text/css', body: '' });
+      });
+
+    for (const [i, [tag, ...checks]] of spec.slides.entries()) {
+      const n = i + 1;
+      const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
+      const label = `${name} slide ${n} (${tag})`;
+      t.ok(`${label}: layout element is there`, (await page.locator(tag).count()) === 1);
+      for (const [selector, prop, expected] of checks) {
+        const got = await page
+          .locator(selector)
+          .first()
+          .evaluate((e, p) => getComputedStyle(e)[p], prop);
+        t.ok(
+          `${label}: ${selector} ${prop}`,
+          expected instanceof RegExp ? expected.test(got) : got === expected,
+          `${got}`,
+        );
+      }
+      if (i === 0) {
+        const total = Number(/slide 1\/(\d+)/.exec(await ctx.hud(page))?.[1]);
+        t.ok(
+          `${name}: the deck has ${spec.slides.length} slides, one per layout`,
+          total === spec.slides.length,
+          String(total),
+        );
+        t.ok(
+          `${name}: ${spec.dark ? 'dark' : 'light'} colour schema from the theme`,
+          (await page.evaluate(() => document.documentElement.classList.contains('dark'))) ===
+            spec.dark,
+        );
+        const sans = await page.evaluate(() =>
+          getComputedStyle(document.documentElement).getPropertyValue('--slidev-font-sans'),
+        );
+        t.ok(
+          `${name}: the body font is the theme's sans font`,
+          sans.startsWith(`"${spec.fonts.sans}"`) &&
+            (await page.evaluate(() => getComputedStyle(document.body).fontFamily)).startsWith(
+              `"${spec.fonts.sans}"`,
+            ),
+          sans.slice(0, 40),
+        );
+        if (spec.fonts.mono) {
+          const mono = await page.evaluate(() =>
+            getComputedStyle(document.documentElement).getPropertyValue(
+              '--slidev-code-font-family',
+            ),
+          );
+          t.ok(
+            `${name}: the code font is the theme's mono font`,
+            mono.includes(spec.fonts.mono) || mono.includes('var(--slidev-font-mono)'),
+            mono.slice(0, 40),
+          );
+        }
+      }
+      await page.close();
+    }
+    // The fonts are asked from the provider, like Slidev (and nothing is asked when only a local font is named).
+    if (spec.fontUrl)
+      t.ok(
+        `${name}: the web fonts are requested from the provider`,
+        fontRequests.length > 0 && spec.fontUrl.every((part) => fontRequests[0].includes(part)),
+        fontRequests[0] ?? 'no request',
+      );
+    else
+      t.ok(
+        `${name}: a local font is not requested from the provider`,
+        fontRequests.length === 0,
+        fontRequests.join(),
+      );
+    t.ok(
+      `${name}: no console errors or warnings`,
+      ctx.problems.length === 0,
+      JSON.stringify(ctx.problems),
+    );
+
+    // One slide as PNG, with the real command line, from the build above.
+    const out = join(scratch, name);
+    mkdirSync(out, { recursive: true });
+    execFileSync(
+      process.execPath,
+      [
+        bin,
+        'export',
+        deck,
+        '--dist',
+        dist,
+        '--format',
+        'png',
+        '--range',
+        String(spec.png.slide),
+        '--scale',
+        '1',
+        '--output',
+        'shots',
+      ],
+      { cwd: out, env, stdio: 'pipe' },
+    );
+    const files = readdirSync(join(out, 'shots'));
+    t.ok(
+      `${name}: png export of slide ${spec.png.slide} writes one file`,
+      files.length === 1,
+      files.join(),
+    );
+    const px = await pixel(browser, join(out, 'shots', files[0]));
+    t.ok(`${name}: the png shows the theme (corner colour)`, spec.png.check(px), px.join());
+    server.close();
+  }
+} finally {
+  await browser.close();
+}
+process.exit(t.done());
