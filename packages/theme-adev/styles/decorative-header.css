@@ -1,0 +1,49 @@
+.adev-decorative-header {
+  container: adev-header / inline-size;
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  border-radius: 0.625rem;
+  background: var(--adev-septenary);
+  color: var(--adev-primary);
+  overflow: hidden;
+}
+.adev-decorative-header-gradient {
+  background: var(--adev-hero);
+  color: var(--adev-on-hero);
+}
+.adev-decorative-header-content {
+  flex: 1;
+  min-width: 0;
+  padding: 1.5rem 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.adev-decorative-header-content > :last-child {
+  margin-bottom: 0;
+}
+.adev-decorative-header-title {
+  font-family: var(--slidev-font-serif, sans-serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+.adev-decorative-header-content > .adev-decorative-header-title + * {
+  margin-top: 0.4rem;
+}
+.adev-decorative-header-img {
+  flex: none;
+  align-self: center;
+  max-width: 250px;
+  max-height: 125px;
+  margin: 0;
+  padding: 2rem 3.5rem 2rem 1rem;
+  box-sizing: content-box;
+  object-fit: contain;
+}
+@container adev-header (max-width: 550px) {
+  .adev-decorative-header {
+    flex-direction: column-reverse;
+  }
+}

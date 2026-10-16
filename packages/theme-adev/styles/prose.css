@@ -1,0 +1,51 @@
+.slidev-layout h4 {
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+.slidev-layout h5 {
+  font-family: var(--slidev-font-serif, sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.slidev-layout table {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 1.6;
+}
+.slidev-layout th {
+  text-align: left;
+  padding-block: 0.4rem;
+  padding-inline: 0 1.5rem;
+  border-block: 1px solid var(--adev-senary);
+}
+.slidev-layout th code {
+  white-space: nowrap;
+}
+.slidev-layout td {
+  padding-block: 0.7rem;
+  padding-inline: 0 1rem;
+}
+
+.slidev-layout a:active {
+  color: var(--adev-hot-red);
+}
+.slidev-layout :is(p, li, td) > a[href^='http:']:not(.adev-button)::after,
+.slidev-layout :is(p, li, td) > a[href^='https:']:not(.adev-button)::after {
+  content: '';
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 0.2em;
+  vertical-align: -0.1em;
+  background: currentColor;
+  -webkit-mask: var(--adev-external-icon) center / contain no-repeat;
+  mask: var(--adev-external-icon) center / contain no-repeat;
+}
+
+.slidev-layout hr {
+  width: 100%;
+  margin-block: 1rem;
+}
