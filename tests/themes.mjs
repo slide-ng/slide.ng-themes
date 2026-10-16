@@ -1,4 +1,4 @@
-// Browser test of the four themes against a slide.ng checkout (see README: SLIDE_NG_DIR, default ../slide.ng).
+// Browser test of the five themes against a slide.ng checkout (see README: SLIDE_NG_DIR, default ../slide.ng).
 // Each deck in examples/ uses `theme: <name>`, found in node_modules/@slide-ng/theme-<name> (npm workspaces link the packages there)
 // and has a slide for every layout of the theme. For each theme: build it with the slide.ng command line, open every slide in
 // Chromium, check the layout element, a distinguishing computed style, the fonts asked from the provider, and that one slide
@@ -19,8 +19,11 @@ const { launch, reporter, serve } = await import(
 );
 const { makeContext } = await import(pathToFileURL(join(core, 'tests/e2e/helpers.mjs')).href);
 
+import { measure } from './adev-contrast.mjs';
+
 const WHITE = 'rgb(255, 255, 255)';
 const rgb = (r, g, b) => `rgb(${r}, ${g}, ${b})`;
+const ADEV_DARK = rgb(15, 15, 17);
 const [TAN, MID, BROWN, DARK, LIGHT] = [
   rgb(191, 146, 107),
   rgb(140, 102, 69),
@@ -186,6 +189,105 @@ const THEMES = {
     ],
     png: { slide: 2, check: (p) => p[0] === 74 && p[1] === 111 && p[2] === 165 },
   },
+  adev: {
+    dark: false,
+    fontUrl: ['Inter', 'Inter+Tight', 'DM+Mono', 'wght@400'],
+    fonts: { sans: 'Inter', mono: 'DM Mono' },
+    slides: [
+      [
+        'adev-cover',
+        ['adev-cover', 'backgroundImage', /gradient/],
+        ['adev-cover', 'color', WHITE],
+        ['adev-cover h1', 'fontFamily', /^"Inter Tight"/],
+      ],
+      [
+        'adev-intro',
+        ['adev-intro h1', 'backgroundImage', /gradient/],
+        ['adev-intro h1', 'fontSize', '64px'],
+      ],
+      ['adev-intro', ['adev-intro', 'backgroundColor', ADEV_DARK]],
+      [
+        'adev-default',
+        ['adev-default', 'backgroundColor', WHITE],
+        ['adev-default h1', 'color', rgb(21, 20, 23)],
+        ['adev-default p code', 'fontFamily', /^"DM Mono"/],
+        ['adev-default .slidev-code-wrapper', 'borderTopWidth', '1px'],
+      ],
+      [
+        'adev-default',
+        ['adev-default', 'backgroundColor', ADEV_DARK],
+        ['adev-default h1', 'color', rgb(251, 251, 251)],
+      ],
+      ['adev-center', ['adev-center', 'textAlign', 'center']],
+      ['adev-center', ['adev-center', 'backgroundColor', ADEV_DARK]],
+      [
+        'adev-section',
+        ['adev-section', 'paddingLeft', '96px'],
+        ['adev-section h1', 'fontSize', '64px'],
+      ],
+      ['adev-section', ['adev-section', 'backgroundColor', ADEV_DARK]],
+      [
+        'adev-two-cols',
+        ['.col-right', 'borderLeftWidth', '1px'],
+        ['adev-two-cols', 'display', 'grid'],
+      ],
+      ['adev-two-cols', ['adev-two-cols', 'backgroundColor', ADEV_DARK]],
+      ['adev-image-right', ['.adev-photo', 'backgroundImage', /gradient/]],
+      ['adev-image-left', ['.adev-photo', 'backgroundImage', /gradient/]],
+      ['adev-quote', ['.adev-quote-card', 'borderTopWidth', '1px']],
+      ['adev-quote', ['adev-quote', 'backgroundColor', ADEV_DARK]],
+      [
+        'adev-fact',
+        ['adev-fact h1', 'fontSize', '128px'],
+        ['adev-fact h1', 'backgroundClip', 'text'],
+      ],
+      ['adev-fact', ['adev-fact', 'backgroundColor', ADEV_DARK]],
+      ['adev-statement', ['adev-statement', 'textAlign', 'center']],
+      ['adev-statement', ['adev-statement', 'backgroundColor', ADEV_DARK]],
+      [
+        'adev-default',
+        ['adev-callout', 'borderLeftWidth', '3px'],
+        ['.adev-callout-critical svg', 'width', /^22\.\d+px$/],
+      ],
+      ['adev-default', ['adev-callout', 'backgroundColor', /^(rgb|color)\(/]],
+      [
+        'adev-default',
+        ['adev-card-grid', 'gridTemplateColumns', /^(\d+(\.\d+)?px ?){3}$/],
+        ['.adev-card-hot', 'borderTopColor', 'rgba(0, 0, 0, 0)'],
+      ],
+      ['adev-default', ['adev-card', 'backgroundColor', ADEV_DARK]],
+      [
+        'adev-center',
+        ['.adev-stat-value', 'backgroundClip', 'text'],
+        ['adev-count-up', 'textContent', /^240\+$/],
+      ],
+      ['adev-center', ['.adev-stat-value', 'fontSize', '72px']],
+      [
+        'adev-default',
+        ['.adev-code-card', 'borderTopWidth', '1px'],
+        ['.adev-steps ol', 'listStyleType', 'none'],
+        ['.adev-button-primary', 'borderTopColor', 'rgba(0, 0, 0, 0)'],
+      ],
+      ['adev-default', ['.adev-code-card-header', 'backgroundColor', rgb(35, 33, 37)]],
+      [
+        'adev-default',
+        ['adev-default th', 'fontWeight', '500'],
+        ['adev-default blockquote', 'borderLeftWidth', '3px'],
+      ],
+      ['adev-default', ['adev-default td code', 'fontFamily', /^"DM Mono"/]],
+      [
+        'adev-end',
+        ['adev-end', 'backgroundImage', /gradient/],
+        ['adev-end', 'textAlign', 'center'],
+      ],
+    ],
+    png: { slide: 1, check: (p) => p[2] > 180 && p[1] < 80 },
+    contrast: {
+      light: [4, 'adev-default'],
+      dark: [4, 'adev-default'],
+      'dark slide': [5, 'adev-default'],
+    },
+  },
 };
 
 const only = process.argv[2];
@@ -243,10 +345,14 @@ try {
       const label = `${name} slide ${n} (${tag})`;
       t.ok(`${label}: layout element is there`, (await page.locator(tag).count()) === 1);
       for (const [selector, prop, expected] of checks) {
+        if (prop === 'textContent') await page.waitForTimeout(2200);
         const got = await page
           .locator(selector)
           .first()
-          .evaluate((e, p) => getComputedStyle(e)[p], prop);
+          .evaluate(
+            (e, p) => (p === 'textContent' ? e.textContent.trim() : getComputedStyle(e)[p]),
+            prop,
+          );
         t.ok(
           `${label}: ${selector} ${prop}`,
           expected instanceof RegExp ? expected.test(got) : got === expected,
@@ -271,9 +377,9 @@ try {
         t.ok(
           `${name}: the body font is the theme's sans font`,
           sans.startsWith(`"${spec.fonts.sans}"`) &&
-            (await page.evaluate(() => getComputedStyle(document.body).fontFamily)).startsWith(
-              `"${spec.fonts.sans}"`,
-            ),
+            (await page.evaluate(() => getComputedStyle(document.body).fontFamily))
+              .replace(/"/g, '')
+              .startsWith(spec.fonts.sans),
           sans.slice(0, 40),
         );
         if (spec.fonts.mono) {
@@ -309,6 +415,21 @@ try {
       ctx.problems.length === 0,
       JSON.stringify(ctx.problems),
     );
+
+    for (const [scheme, [n, selector]] of Object.entries(spec.contrast ?? {})) {
+      const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
+      await page.evaluate(
+        (dark) => document.documentElement.classList.toggle('dark', dark),
+        scheme === 'dark',
+      );
+      for (const [what, ratio, min] of await measure(page, selector))
+        t.ok(
+          `${name} ${scheme}: contrast ${what}`,
+          ratio >= min,
+          `${ratio.toFixed(2)} (>= ${min})`,
+        );
+      await page.close();
+    }
 
     // One slide as PNG, with the real command line, from the build above.
     const out = join(scratch, name);

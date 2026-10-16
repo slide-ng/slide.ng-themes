@@ -9,8 +9,8 @@ const root = resolve(import.meta.dirname, '..');
 const names = readdirSync(join(root, 'packages')).map((d) => d.replace(/^theme-/, ''));
 const json = (file) => JSON.parse(readFileSync(file, 'utf8'));
 
-it('holds the four official themes', () => {
-  assert.deepEqual(names.sort(), ['apple-basic', 'bricks', 'seriph', 'shibainu']);
+it('holds the five official themes', () => {
+  assert.deepEqual(names.sort(), ['adev', 'apple-basic', 'bricks', 'seriph', 'shibainu']);
 });
 
 for (const name of names) {
