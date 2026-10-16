@@ -5,8 +5,8 @@
 
 # slide.ng themes
 
-The official themes of [slide.ng](https://github.com/slide-ng/slide.ng), one npm package each. They are ports of the official
-[Slidev themes](https://github.com/slidevjs/themes), rebuilt for slide.ng's theme contract (layouts, components and CSS as Angular code).
+The official themes of [slide.ng](https://github.com/slide-ng/slide.ng), one npm package each. Four are ports of the official
+[Slidev themes](https://github.com/slidevjs/themes), rebuilt for slide.ng's theme contract (layouts, components and CSS as Angular code); `adev` is new and inspired by [angular.dev](https://angular.dev).
 
 | Theme         | Package                                                     | Original                                             | Layouts                                       |
 | ------------- | ----------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------- |
@@ -14,6 +14,7 @@ The official themes of [slide.ng](https://github.com/slide-ng/slide.ng), one npm
 | `shibainu`    | [`@slide-ng/theme-shibainu`](packages/theme-shibainu)       | [iiiiiiinès](https://github.com/iiiiiiines)          | 14                                            |
 | `bricks`      | [`@slide-ng/theme-bricks`](packages/theme-bricks)           | [iiiiiiinès](https://github.com/iiiiiiines)          | 9, and `<polygon-1 />` to `<polygon-11 />`    |
 | `apple-basic` | [`@slide-ng/theme-apple-basic`](packages/theme-apple-basic) | [Jeremy Meissner](https://github.com/JeremyMeissner) | 10                                            |
+| `adev`        | [`@slide-ng/theme-adev`](packages/theme-adev)               | Inspired by [angular.dev](https://angular.dev)       | 12, and seven components (`<adev-callout>`)   |
 
 `default` is not here: it is the built-in look of slide.ng.
 
@@ -87,7 +88,7 @@ The slide.ng themes is free and open source. If it helps your work, please consi
 ## Credits and licence
 
 Layout names, slots, CSS values and font settings follow the Slidev themes, which are MIT licensed (Copyright (c) 2021 Slidev.js Team).
-The designs are by Anthony Fu (seriph), iiiiiiinès (shibainu, bricks) and Jeremy Meissner (apple-basic). The Angular code is new.
+The designs are by Anthony Fu (seriph), iiiiiiinès (shibainu, bricks) and Jeremy Meissner (apple-basic). The Angular code is new. `adev` is inspired by angular.dev (Angular, MIT, Google LLC) and is not an official Angular theme; slide.ng is not affiliated with or endorsed by Google or the Angular team.
 The images of the originals are CC BY-NC-SA 4.0 and are not copied here; the ports draw CSS gradients instead (see [NOTICE](NOTICE)).
 
 This repository is MIT licensed, see [LICENSE](LICENSE).

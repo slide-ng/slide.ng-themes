@@ -10,6 +10,7 @@ The first version. Nothing is published yet.
 
 ### Added
 
+- `@slide-ng/theme-adev`, a fifth theme inspired by angular.dev (12 layouts, light and dark, and the components `<adev-callout>`, `<adev-card>`, `<adev-card-grid>`, `<adev-stat>`, `<adev-count-up>`, `<adev-code-card>`, `<adev-steps>` and `<adev-button>`), with a contrast check in `tests/adev-contrast.mjs`.
 - Four theme packages, ports of Slidev themes rebuilt for slide.ng's theme contract: `@slide-ng/theme-seriph` (the `cover` layout and restyled built-in layouts), `@slide-ng/theme-shibainu` (14 layouts), `@slide-ng/theme-bricks` (9 layouts and the `<polygon-1 />` to `<polygon-11 />` components) and `@slide-ng/theme-apple-basic` (10 layouts).
 - A showcase deck for every theme in `examples/`, with a slide for each layout.
 - Package checks (`tests/packages.test.mjs`) and a browser test of every theme against a slide.ng checkout (`tests/themes.mjs`).

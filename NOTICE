@@ -11,6 +11,10 @@ Original designs (each package also carries its own LICENSE and NOTICE):
 - seriph: Anthony Fu (https://github.com/antfu)
 - shibainu and bricks: iiiiiiinès (https://github.com/iiiiiiines)
 - apple-basic: Jeremy Meissner (https://github.com/JeremyMeissner)
+- adev: not a port. It is inspired by angular.dev, the Angular documentation site (MIT License,
+  Copyright (c) 2010-2026 Google LLC, https://github.com/angular/angular). It is not an official Angular
+  theme, and slide.ng is not affiliated with or endorsed by Google or the Angular team. Its own NOTICE
+  has the credits, the font licences and the terms for the Angular logo (CC BY 4.0).
 
 What is ported: the layout names and slots, the CSS values, and the font settings. The Angular components are new code. The eleven polygon shapes
 of bricks are drawn for slide.ng and share no path data with the originals.
