@@ -68,6 +68,8 @@ All complaints will be reviewed and investigated promptly and fairly.
 All community leaders are obligated to respect the privacy and security of the
 reporter of any incident.
 
+If you cannot use GitHub, email erkamyaman35@gmail.com with "Code of Conduct" in the subject.
+
 ## Enforcement Guidelines
 
 Community leaders will follow these Community Impact Guidelines in determining

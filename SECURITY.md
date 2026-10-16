@@ -9,6 +9,8 @@ open the **Security** tab of this repository and choose **Report a vulnerability
 Describe what you found, which package and version it affects, and how to reproduce it. We will answer
 in the report and keep it private until a fix is released.
 
+If you cannot use GitHub, email erkamyaman35@gmail.com with "Security" in the subject.
+
 ## Scope
 
 The packages here are themes: layouts, components and CSS that slide.ng builds into a deck. Problems
