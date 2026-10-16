@@ -1,0 +1,339 @@
+.adev-tabs {
+  display: block;
+  margin: 1rem 0;
+}
+.adev-tab-list {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--adev-senary);
+}
+.adev-tab {
+  position: relative;
+  padding: 0.7rem 1.1rem;
+  border: 0;
+  border-radius: 4px 4px 0 0;
+  background: transparent;
+  color: var(--adev-quaternary);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.adev-tab::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: var(--adev-grad-pink-purple);
+  opacity: 0;
+  transform: scaleX(0.7);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+.adev-tab:hover {
+  color: var(--adev-primary);
+}
+.adev-tab:hover::after {
+  opacity: 0.35;
+}
+.adev-tab-active {
+  color: var(--adev-primary);
+}
+.adev-tab-active::after,
+.adev-tab-active:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+.adev-tab:focus-visible,
+.adev-tab-panel:focus-visible {
+  outline: 2px solid var(--adev-electric-violet);
+  outline-offset: 2px;
+}
+.adev-tab-panel {
+  display: block;
+  padding-top: 1rem;
+}
+.adev-tab-panel[hidden] {
+  display: none;
+}
+.adev-tab-panel > :first-child:not(.adev-tab-print-label) {
+  margin-top: 0;
+}
+.adev-tabs-stacked .adev-tab-panel {
+  padding: 0.6rem 0 0;
+  border-top: 1px solid var(--adev-senary);
+}
+.adev-tab-print-label {
+  margin-bottom: 0.4rem;
+  color: var(--adev-kicker);
+  font-family: var(--slidev-font-mono, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+}
+
+.slidev-layout img:where(:not(.adev-photo img)) {
+  display: block;
+  max-width: 100%;
+  margin: 0.6rem 0;
+  border: 1px solid var(--adev-senary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.slidev-layout img[src$='#small'],
+.adev-image-small .adev-image-img {
+  max-width: 250px;
+}
+.slidev-layout img[src$='#medium'],
+.adev-image-medium .adev-image-img {
+  max-width: 450px;
+}
+.adev-image {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0.8rem 0;
+}
+.adev-image-img {
+  width: 100%;
+  height: auto;
+}
+.adev-image-caption {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--adev-quaternary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.adev-video {
+  display: block;
+  max-width: 44rem;
+  margin: 1rem 0;
+}
+.adev-video-frame {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--adev-senary);
+  border-radius: 4px;
+  background: var(--adev-septenary);
+}
+.adev-video-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.adev-video-poster {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 1.25rem;
+  border: 0;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      color-mix(in srgb, var(--adev-vivid-pink) 18%, transparent),
+      transparent 55%
+    ),
+    var(--adev-septenary);
+  color: var(--adev-primary);
+  font: inherit;
+  text-align: left;
+}
+button.adev-video-poster {
+  cursor: pointer;
+}
+button.adev-video-poster:disabled {
+  cursor: default;
+}
+.adev-video-title {
+  max-width: 80%;
+  font-family: var(--slidev-font-serif, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.adev-video-play {
+  position: absolute;
+  inset: 0;
+  width: 68px;
+  height: 48px;
+  margin: auto;
+}
+.adev-video-play rect {
+  fill: var(--adev-primary);
+  transition: fill 0.2s ease;
+}
+.adev-video-play path {
+  fill: var(--adev-page);
+}
+button.adev-video-poster:hover .adev-video-play rect,
+button.adev-video-poster:focus-visible .adev-video-play rect {
+  fill: var(--adev-hot-pink);
+}
+button.adev-video-poster:focus-visible {
+  outline: 2px solid var(--adev-electric-violet);
+  outline-offset: -4px;
+}
+
+:root,
+html[data-adev-scheme='light'] {
+  --adev-chart-1: var(--adev-bright-blue);
+  --adev-chart-2: color-mix(in srgb, var(--adev-vivid-pink) 70%, black);
+  --adev-chart-3: color-mix(in srgb, var(--adev-hot-red) 85%, black);
+  --adev-chart-4: var(--adev-electric-violet);
+  --adev-chart-5: color-mix(in srgb, var(--adev-cyan) 70%, black);
+  --adev-chart-6: color-mix(in srgb, var(--adev-orange-red) 75%, black);
+  --adev-chart-7: var(--adev-indigo-blue);
+  --adev-chart-8: color-mix(in srgb, var(--adev-yellow) 55%, black);
+  --adev-chart-ink: #fff;
+}
+html[data-adev-scheme='dark'] {
+  --adev-chart-1: var(--adev-bright-blue);
+  --adev-chart-2: var(--adev-vivid-pink);
+  --adev-chart-3: var(--adev-hot-red);
+  --adev-chart-4: var(--adev-electric-violet);
+  --adev-chart-5: var(--adev-cyan);
+  --adev-chart-6: var(--adev-orange-red);
+  --adev-chart-7: var(--adev-indigo-blue);
+  --adev-chart-8: var(--adev-yellow);
+  --adev-chart-ink: var(--adev-octonary);
+}
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+.mermaid svg {
+  max-height: 24rem;
+  overflow: visible;
+}
+.mermaid svg :is(.node, .cluster, .actor, .note, .labelBox) :is(rect, polygon, path, circle),
+.mermaid svg :is(rect.actor, rect.note, rect.labelBox) {
+  filter: none !important;
+  rx: 4px;
+}
+.mermaid svg .node :is(rect, polygon, path, circle),
+.mermaid svg rect.actor {
+  fill: var(--adev-septenary) !important;
+  stroke: var(--adev-quaternary) !important;
+}
+.mermaid svg .cluster rect {
+  fill: var(--adev-octonary) !important;
+  stroke: var(--adev-quinary) !important;
+}
+.mermaid svg :is(.flowchart-link, .marker, .arrowMarkerPath) {
+  stroke: var(--adev-quaternary) !important;
+}
+.mermaid svg :is(.marker, .arrowMarkerPath) {
+  fill: var(--adev-quaternary) !important;
+}
+.mermaid svg .flowchart-link {
+  fill: none !important;
+}
+.mermaid svg foreignObject,
+.mermaid svg foreignObject :is(span, p, div) {
+  color: var(--adev-primary) !important;
+}
+.mermaid svg .edgeLabel,
+.mermaid svg .edgeLabel :is(span, p, div) {
+  background-color: var(--adev-page) !important;
+}
+.mermaid svg :is(.nodeLabel, .edgeLabel, .cluster-label) {
+  color: var(--adev-primary) !important;
+}
+.mermaid svg .actor-line {
+  stroke: var(--adev-quinary) !important;
+}
+.mermaid svg :is(text.actor, text.actor > tspan, .messageText, .noteText, .loopText, .labelText) {
+  fill: var(--adev-primary) !important;
+  stroke: none !important;
+}
+.mermaid svg :is(.messageLine0, .messageLine1) {
+  stroke: var(--adev-primary) !important;
+}
+.mermaid svg[aria-roledescription='sequence'] marker path {
+  fill: var(--adev-primary) !important;
+  stroke: var(--adev-primary) !important;
+}
+.mermaid svg :is(.activation0, .activation1, .activation2) {
+  fill: var(--adev-senary) !important;
+  stroke: var(--adev-quaternary) !important;
+}
+.mermaid svg :is(rect.note, rect.labelBox) {
+  fill: var(--adev-septenary) !important;
+  stroke: var(--adev-quaternary) !important;
+}
+.mermaid svg :is(.loopLine) {
+  stroke: var(--adev-quaternary) !important;
+}
+.mermaid svg .pieCircle {
+  stroke: var(--adev-page) !important;
+}
+.mermaid svg .slice {
+  fill: var(--adev-chart-ink) !important;
+}
+.mermaid svg[aria-roledescription='pie'] :is(.pieTitleText, g > text:not(.slice)) {
+  fill: var(--adev-primary) !important;
+}
+.mermaid svg .pieCircle:nth-of-type(1),
+.mermaid svg .legend:nth-of-type(2) rect {
+  fill: var(--adev-chart-1) !important;
+}
+.mermaid svg .legend:nth-of-type(2) rect {
+  stroke: var(--adev-chart-1) !important;
+}
+.mermaid svg .pieCircle:nth-of-type(2),
+.mermaid svg .legend:nth-of-type(3) rect {
+  fill: var(--adev-chart-2) !important;
+}
+.mermaid svg .legend:nth-of-type(3) rect {
+  stroke: var(--adev-chart-2) !important;
+}
+.mermaid svg .pieCircle:nth-of-type(3),
+.mermaid svg .legend:nth-of-type(4) rect {
+  fill: var(--adev-chart-3) !important;
+}
+.mermaid svg .legend:nth-of-type(4) rect {
+  stroke: var(--adev-chart-3) !important;
+}
+.mermaid svg .pieCircle:nth-of-type(4),
+.mermaid svg .legend:nth-of-type(5) rect {
+  fill: var(--adev-chart-4) !important;
+}
+.mermaid svg .legend:nth-of-type(5) rect {
+  stroke: var(--adev-chart-4) !important;
+}
+.mermaid svg .pieCircle:nth-of-type(5),
+.mermaid svg .legend:nth-of-type(6) rect {
+  fill: var(--adev-chart-5) !important;
+}
+.mermaid svg .legend:nth-of-type(6) rect {
+  stroke: var(--adev-chart-5) !important;
+}
+.mermaid svg .pieCircle:nth-of-type(6),
+.mermaid svg .legend:nth-of-type(7) rect {
+  fill: var(--adev-chart-6) !important;
+}
+.mermaid svg .legend:nth-of-type(7) rect {
+  stroke: var(--adev-chart-6) !important;
+}
+.mermaid svg .pieCircle:nth-of-type(7),
+.mermaid svg .legend:nth-of-type(8) rect {
+  fill: var(--adev-chart-7) !important;
+}
+.mermaid svg .legend:nth-of-type(8) rect {
+  stroke: var(--adev-chart-7) !important;
+}
+.mermaid svg .pieCircle:nth-of-type(8),
+.mermaid svg .legend:nth-of-type(9) rect {
+  fill: var(--adev-chart-8) !important;
+}
+.mermaid svg .legend:nth-of-type(9) rect {
+  stroke: var(--adev-chart-8) !important;
+}
