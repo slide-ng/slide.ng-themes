@@ -16,7 +16,7 @@
   font-size: 0.95rem;
   line-height: 1.5;
 }
-html.dark .adev-callout {
+html[data-adev-scheme='dark'] .adev-callout {
   background: color-mix(in srgb, var(--accent) 12%, var(--adev-page));
 }
 .adev-callout-icon {
@@ -223,4 +223,44 @@ html.dark .adev-callout {
   display: flex;
   gap: 4.5rem;
   justify-content: center;
+}
+
+.adev-scheme-button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--adev-senary);
+  border-radius: 4px;
+  background: var(--adev-page);
+  color: var(--adev-tertiary);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+.adev-scheme-button:hover {
+  background: var(--adev-septenary);
+  color: var(--adev-primary);
+}
+.adev-scheme-button:focus-visible {
+  outline: 2px solid var(--adev-bright-blue);
+  outline-offset: 2px;
+}
+.adev-scheme-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

@@ -1,5 +1,5 @@
-:root {
-  color-scheme: light;
+:root,
+html[data-adev-scheme='light'] {
   --adev-bright-blue: oklch(51.01% 0.274 263.83);
   --adev-indigo-blue: oklch(51.64% 0.229 281.65);
   --adev-electric-violet: oklch(53.18% 0.28 296.97);
@@ -27,8 +27,7 @@
   --adev-on-hero: #fff;
 }
 
-html.dark {
-  color-scheme: dark;
+html[data-adev-scheme='dark'] {
   --adev-bright-blue: color-mix(in srgb, oklch(51.01% 0.274 263.83), white 60%);
   --adev-indigo-blue: color-mix(in srgb, oklch(51.64% 0.229 281.65), white 70%);
   --adev-electric-violet: color-mix(in srgb, oklch(53.18% 0.28 296.97), white 70%);
@@ -55,7 +54,7 @@ html.dark {
 }
 
 :root,
-html.dark {
+html[data-adev-scheme] {
   --adev-grad-brand: linear-gradient(
     90deg,
     var(--adev-orange-red),
@@ -87,7 +86,7 @@ html.dark {
   --adev-kicker: var(--adev-electric-violet);
   --adev-code-ink: color-mix(in srgb, var(--adev-hot-pink) 85%, var(--adev-full));
   --adev-subtle-purple: color-mix(in srgb, var(--adev-bright-blue) 8%, var(--adev-page));
-  --slidev-theme-primary: var(--adev-electric-violet);
+  --slidev-theme-primary: #8514f5;
   --slidev-code-background: var(--adev-code-bg);
   --slidev-code-foreground: var(--adev-primary);
   --slidev-code-tab-text-color: var(--adev-tertiary);
