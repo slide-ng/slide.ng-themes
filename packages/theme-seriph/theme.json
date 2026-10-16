@@ -1,0 +1,12 @@
+{
+  "name": "seriph",
+  "headmatter": {
+    "fonts": {
+      "sans": "PT Serif",
+      "serif": "PT Serif",
+      "mono": "PT Mono",
+      "italic": true,
+      "weights": "400, 700"
+    }
+  }
+}

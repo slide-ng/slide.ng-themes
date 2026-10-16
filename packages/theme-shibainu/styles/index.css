@@ -1,0 +1,135 @@
+/* shibainu: brown and tan, a light grey text colour, small uppercase h3. Port of @slidev/theme-shibainu.
+   The backgrounds are our own circles and ellipses (CSS gradients) in the same palette; no image of the original is used. */
+:root {
+  --slidev-theme-primary: #402312;
+  --shibainu-light: #ebeef2;
+  --shibainu-tan: #bf926b;
+  --shibainu-mid: #8c6645;
+  --shibainu-brown: #734226;
+  --shibainu-dark: #402312;
+}
+
+.slidev-layout {
+  position: relative;
+  height: 100%;
+  color: var(--slidev-theme-primary);
+}
+
+.slidev-layout h3 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  margin-left: -0.05em;
+  opacity: 0.4;
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.intro h1 {
+  color: inherit;
+}
+
+/* Layouts with a dark background use the light text colour and a dark code box. */
+.slidev-layout.default-1,
+.slidev-layout.default-2,
+.slidev-layout.default-3,
+.slidev-layout.default-4,
+.slidev-layout.default-5,
+.slidev-layout.default-6,
+.slidev-layout.default-7,
+.slidev-layout.section-1,
+.slidev-layout.section-3,
+.slidev-layout.quote {
+  color: var(--shibainu-light);
+  --slidev-code-background: #1b1b1b;
+  --slidev-code-foreground: #eee;
+}
+.slidev-layout.quote h1 {
+  font-size: 4em;
+}
+.slidev-layout.section-3 h1 {
+  font-size: 3em;
+}
+
+/* Backgrounds: a base colour with big round shapes. */
+.shibainu-bg-cover {
+  background:
+    radial-gradient(circle at 6% 100%, var(--shibainu-mid) 0 26%, transparent 26.3%),
+    radial-gradient(ellipse 34% 40% at 98% 104%, var(--shibainu-dark) 0 100%, transparent 100.3%),
+    radial-gradient(circle at 90% 12%, var(--shibainu-mid) 0 7%, transparent 7.3%),
+    var(--shibainu-tan);
+}
+.shibainu-bg-center {
+  background:
+    radial-gradient(circle at 96% 8%, var(--shibainu-mid) 0 20%, transparent 20.3%),
+    radial-gradient(ellipse 30% 36% at 2% 100%, var(--shibainu-brown) 0 100%, transparent 100.3%),
+    radial-gradient(circle at 8% 14%, var(--shibainu-dark) 0 5%, transparent 5.3%),
+    var(--shibainu-tan);
+}
+.shibainu-bg-1 {
+  background:
+    radial-gradient(circle at 100% 92%, var(--shibainu-dark) 0 24%, transparent 24.3%),
+    radial-gradient(ellipse 22% 30% at 100% 0%, var(--shibainu-mid) 0 100%, transparent 100.3%),
+    var(--shibainu-brown);
+}
+.shibainu-bg-section {
+  background:
+    radial-gradient(ellipse 70% 38% at 50% 112%, var(--shibainu-dark) 0 100%, transparent 100.3%),
+    radial-gradient(circle at 94% 20%, var(--shibainu-mid) 0 12%, transparent 12.3%),
+    var(--shibainu-brown);
+}
+.shibainu-bg-section-2 {
+  background:
+    radial-gradient(circle at 0% 50%, var(--shibainu-mid) 0 24%, transparent 24.3%),
+    radial-gradient(ellipse 28% 36% at 100% 100%, var(--shibainu-dark) 0 100%, transparent 100.3%),
+    var(--shibainu-tan);
+}
+.shibainu-bg-section-3 {
+  background:
+    radial-gradient(circle at 50% 50%, var(--shibainu-brown) 0 38%, transparent 38.3%),
+    radial-gradient(circle at 50% 50%, var(--shibainu-mid) 0 48%, transparent 48.3%),
+    var(--shibainu-dark);
+}
+.shibainu-bg-2 {
+  background:
+    radial-gradient(circle at 100% 50%, var(--shibainu-mid) 0 26%, transparent 26.3%),
+    radial-gradient(circle at 100% 50%, var(--shibainu-tan) 0 12%, transparent 12.3%),
+    var(--shibainu-brown);
+}
+.shibainu-bg-3 {
+  background:
+    radial-gradient(ellipse 100% 14% at 50% 108%, var(--shibainu-dark) 0 100%, transparent 100.3%),
+    var(--shibainu-brown);
+}
+.shibainu-bg-4 {
+  background:
+    radial-gradient(circle at 0% 60%, var(--shibainu-brown) 0 22%, transparent 22.3%),
+    radial-gradient(circle at 0% 60%, var(--shibainu-dark) 0 10%, transparent 10.3%),
+    var(--shibainu-mid);
+}
+.shibainu-bg-5 {
+  background:
+    radial-gradient(circle at 100% 100%, var(--shibainu-brown) 0 28%, transparent 28.3%),
+    radial-gradient(circle at 0% 0%, var(--shibainu-dark) 0 14%, transparent 14.3%),
+    var(--shibainu-mid);
+}
+.shibainu-bg-6 {
+  background:
+    radial-gradient(circle at 50% 120%, var(--shibainu-mid) 0 34%, transparent 34.3%),
+    radial-gradient(circle at 50% -20%, var(--shibainu-brown) 0 24%, transparent 24.3%),
+    var(--shibainu-dark);
+}
+.shibainu-bg-7 {
+  background:
+    radial-gradient(circle at 100% 40%, var(--shibainu-brown) 0 30%, transparent 30.3%),
+    radial-gradient(circle at 100% 40%, var(--shibainu-mid) 0 16%, transparent 16.3%),
+    var(--shibainu-dark);
+}
+.shibainu-bg-quote {
+  background:
+    radial-gradient(circle at 0% 100%, var(--shibainu-brown) 0 24%, transparent 24.3%),
+    radial-gradient(circle at 100% 0%, var(--shibainu-brown) 0 24%, transparent 24.3%),
+    var(--shibainu-mid);
+}

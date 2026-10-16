@@ -1,0 +1,179 @@
+/* bricks: bright flat shapes (red, yellow, blue, pink), a serif font for headings. Port of @slidev/theme-bricks.
+   The backgrounds are our own CSS gradients in the same palette; no image of the original is used. */
+:root {
+  --bricks-red: #f07a6b;
+  --bricks-yellow: #f9d56e;
+  --bricks-blue: #72a6e2;
+  --bricks-pink: #e29b94;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-family: var(--slidev-font-serif, serif);
+}
+.slidev-layout h1 + p {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  font-family: var(--slidev-font-serif, serif);
+}
+.slidev-layout h3 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  margin-left: -0.05em;
+  opacity: 0.4;
+}
+.slidev-layout ul {
+  list-style: disc;
+}
+
+/* Layouts: sizes of the Slidev layouts (text-6xl = 3.75rem, leading-15 = 3.75rem, leading-20 = 5rem). */
+.slidev-layout.cover {
+  display: grid;
+  font-family: var(--slidev-font-serif, serif);
+}
+.slidev-layout.cover h1 {
+  font-size: 3.75rem;
+  line-height: 5rem;
+}
+.slidev-layout.cover h1 + p {
+  font-size: 1.5rem;
+  margin-top: -1.5rem;
+}
+
+.slidev-layout.default {
+  padding: 4em 5em;
+}
+
+.slidev-layout.fact,
+.slidev-layout.quote,
+.slidev-layout.statement {
+  text-align: center;
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+  height: 100%;
+  display: grid;
+}
+.slidev-layout.fact h1,
+.slidev-layout.quote h1,
+.slidev-layout.statement h1 {
+  font-size: 3.75rem;
+  line-height: 3.75rem;
+}
+
+.slidev-layout.intro {
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  text-align: center;
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+}
+.slidev-layout.intro h1 {
+  font-size: 4.5rem;
+  line-height: 5rem;
+}
+
+.slidev-layout.items {
+  text-align: center;
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+}
+.slidev-layout.items h1 {
+  font-size: 3rem;
+  line-height: 3.75rem;
+}
+.bricks-items-grid {
+  display: grid;
+  padding: 5% 2.5rem 0;
+}
+
+.slidev-layout.section-1 {
+  display: grid;
+}
+.slidev-layout.section-1 h1 {
+  font-size: 3rem;
+  line-height: 3.75rem;
+}
+.slidev-layout.section-1 h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.slidev-layout.section-1 h2 + p {
+  margin-top: 0;
+}
+.bricks-section-left {
+  padding: 45% 0.5rem 0;
+}
+.bricks-section-right {
+  margin-block: auto;
+  padding-top: 10%;
+}
+
+/* The shapes of <polygon-N />: natural size from --w and --h, replaceable with a class such as w-20. */
+:where(.bricks-polygon) {
+  display: block;
+  width: var(--w);
+  height: var(--h);
+}
+.bricks-polygon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Backgrounds: flat circles, half circles and triangles in the corners. */
+.bricks-bg-cover {
+  background:
+    radial-gradient(circle at 92% 16%, var(--bricks-blue) 0 8%, transparent 8.2%),
+    radial-gradient(ellipse 16% 28% at 82% 100%, var(--bricks-yellow) 0 100%, transparent 100.2%),
+    linear-gradient(45deg, var(--bricks-red) 50%, transparent 50%) 3% 94% / 9% 16% no-repeat,
+    linear-gradient(135deg, var(--bricks-pink) 50%, transparent 50%) 98% 100% / 7% 12% no-repeat;
+}
+.bricks-bg-default {
+  background:
+    radial-gradient(circle at 100% 0%, var(--bricks-yellow) 0 9%, transparent 9.2%),
+    linear-gradient(45deg, var(--bricks-red) 50%, transparent 50%) 0 100% / 6% 11% no-repeat,
+    radial-gradient(circle at 98% 96%, var(--bricks-blue) 0 4%, transparent 4.2%);
+}
+.bricks-bg-fact {
+  background:
+    radial-gradient(ellipse 14% 26% at 8% 100%, var(--bricks-blue) 0 100%, transparent 100.2%),
+    radial-gradient(circle at 94% 12%, var(--bricks-red) 0 7%, transparent 7.2%),
+    linear-gradient(135deg, var(--bricks-yellow) 50%, transparent 50%) 100% 100% / 9% 16% no-repeat;
+}
+.bricks-bg-intro {
+  background:
+    radial-gradient(ellipse 18% 32% at 0% 100%, var(--bricks-yellow) 0 100%, transparent 100.2%),
+    radial-gradient(circle at 46% 8%, var(--bricks-red) 0 6%, transparent 6.2%),
+    linear-gradient(45deg, var(--bricks-blue) 50%, transparent 50%) 30% 100% / 8% 14% no-repeat,
+    radial-gradient(circle at 96% 10%, var(--bricks-pink) 0 5%, transparent 5.2%);
+}
+.bricks-bg-items {
+  background:
+    radial-gradient(circle at 4% 6%, var(--bricks-blue) 0 5%, transparent 5.2%),
+    radial-gradient(ellipse 12% 22% at 100% 100%, var(--bricks-pink) 0 100%, transparent 100.2%),
+    linear-gradient(45deg, var(--bricks-yellow) 50%, transparent 50%) 0 100% / 7% 12% no-repeat;
+}
+.bricks-bg-quote {
+  background:
+    radial-gradient(circle at 0% 50%, var(--bricks-yellow) 0 12%, transparent 12.2%),
+    radial-gradient(circle at 100% 50%, var(--bricks-blue) 0 12%, transparent 12.2%),
+    linear-gradient(135deg, var(--bricks-red) 50%, transparent 50%) 50% 0 / 6% 10% no-repeat;
+}
+.bricks-bg-section {
+  background:
+    radial-gradient(ellipse 30% 50% at 0% 100%, var(--bricks-red) 0 100%, transparent 100.2%),
+    radial-gradient(circle at 36% 18%, var(--bricks-yellow) 0 8%, transparent 8.2%),
+    linear-gradient(45deg, var(--bricks-blue) 50%, transparent 50%) 100% 100% / 8% 14% no-repeat;
+}
+.bricks-bg-statement {
+  background:
+    radial-gradient(circle at 6% 10%, var(--bricks-red) 0 6%, transparent 6.2%),
+    radial-gradient(ellipse 16% 28% at 94% 100%, var(--bricks-blue) 0 100%, transparent 100.2%),
+    linear-gradient(135deg, var(--bricks-yellow) 50%, transparent 50%) 0 100% / 8% 14% no-repeat;
+}

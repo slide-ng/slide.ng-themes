@@ -1,0 +1,16 @@
+{
+  "name": "bricks",
+  "headmatter": {
+    "colorSchema": "light",
+    "fonts": {
+      "sans": "Signika Negative",
+      "serif": "Sigmar One",
+      "mono": "Fira Code"
+    }
+  },
+  "layouts": {
+    "intro": { "props": [], "slots": ["left"], "classProp": false },
+    "items": { "props": ["cols"], "slots": ["items"], "classProp": false },
+    "section": { "props": [], "slots": ["right"], "classProp": false }
+  }
+}

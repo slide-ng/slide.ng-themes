@@ -1,0 +1,23 @@
+/* seriph: serif fonts (theme.json), a blue-grey accent and coloured headings. Port of @slidev/theme-seriph. */
+:root {
+  --slidev-theme-primary: #5d8392;
+}
+
+.slidev-layout h1 {
+  color: var(--slidev-theme-primary);
+}
+
+/* The cover and intro keep the text colour for the title. */
+.slidev-layout.cover h1,
+.slidev-layout.intro h1 {
+  color: inherit;
+}
+
+/* Our own gradient where Slidev uses a random photo. */
+.seriph-cover-plain {
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(255, 255, 255, 0.22), transparent 55%),
+    radial-gradient(ellipse at 85% 85%, rgba(20, 40, 50, 0.55), transparent 60%),
+    linear-gradient(135deg, #7a9fae 0%, #5d8392 45%, #2f4752 100%);
+}

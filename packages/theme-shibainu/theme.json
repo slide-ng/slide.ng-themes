@@ -1,0 +1,13 @@
+{
+  "name": "shibainu",
+  "headmatter": {
+    "colorSchema": "dark",
+    "fonts": {
+      "sans": "Titillium Web",
+      "mono": "Fira Code"
+    }
+  },
+  "layouts": {
+    "default-3": { "props": [], "slots": [], "classProp": true }
+  }
+}

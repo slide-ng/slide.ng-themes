@@ -1,0 +1,20 @@
+{
+  "name": "apple-basic",
+  "headmatter": {
+    "fonts": {
+      "sans": "Helvetica Neue",
+      "local": "Helvetica Neue"
+    }
+  },
+  "layouts": {
+    "intro-image": { "props": ["image"], "slots": [], "classProp": false },
+    "intro-image-right": { "props": ["image"], "slots": [], "classProp": true },
+    "image-right": { "props": ["image"], "slots": [], "classProp": true },
+    "3-images": {
+      "props": ["imageLeft", "imageTopRight", "imageBottomRight"],
+      "slots": [],
+      "classProp": false
+    },
+    "bullets": { "props": [], "slots": [], "classProp": false }
+  }
+}

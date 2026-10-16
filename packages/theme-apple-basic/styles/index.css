@@ -1,0 +1,104 @@
+/* apple-basic: the look of Keynote's "Basic White": Helvetica Neue, bold headings, plain white slides.
+   Port of @slidev/theme-apple-basic. */
+.slidev-layout {
+  padding: 2.5rem 3.5rem;
+  font-size: 1.1rem;
+}
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4,
+.slidev-layout p,
+.slidev-layout div {
+  user-select: none;
+}
+.slidev-layout pre,
+.slidev-layout code {
+  user-select: text;
+}
+
+.slidev-layout h1 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.slidev-layout h1 + h2 {
+  margin-top: -1rem;
+}
+.slidev-layout h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+.slidev-layout h3 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  margin-left: -0.05em;
+  opacity: 0.4;
+}
+.slidev-layout ul {
+  list-style: disc;
+  margin-bottom: 1rem;
+}
+
+.slidev-layout.intro-image,
+.slidev-layout.intro {
+  height: 100%;
+}
+.slidev-layout.intro-image h1,
+.slidev-layout.intro h1 {
+  font-size: 3.75rem;
+  line-height: 5rem;
+  font-weight: 700;
+}
+.slidev-layout.intro-image h1 + p,
+.slidev-layout.intro h1 + p {
+  font-weight: 700;
+  margin-top: -1rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.slidev-layout.fact {
+  text-align: center;
+}
+.slidev-layout.fact h1 {
+  font-size: 6rem;
+  line-height: 1;
+  font-weight: 700;
+}
+.slidev-layout.fact h1 + p {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.slidev-layout.statement {
+  text-align: center;
+}
+.slidev-layout.statement h1 {
+  font-size: 3.75rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.slidev-layout.quote h1 + p {
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.slidev-layout.section h1 {
+  font-size: 3.75rem;
+  line-height: 5rem;
+  font-weight: 500;
+}
+
+/* The photo beside the text: a margin on the top, right and bottom. */
+.apple-photo {
+  margin: 3.5rem 3.5rem 3.5rem 0;
+}
