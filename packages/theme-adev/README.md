@@ -1,6 +1,6 @@
 # adev
 
-The look of [angular.dev](https://angular.dev), the Angular documentation site: Inter type, hairline grey borders, four pixel corners, the pink to purple to blue gradient used sparingly, and callouts, cards and code blocks drawn like the docs. Light and dark. Install it with `npm i -D @slide-ng/theme-adev` and use it with `theme: adev`.
+The look of [angular.dev](https://angular.dev), the Angular documentation site: Inter type, hairline grey borders, four pixel corners, the pink to purple to blue gradient used sparingly, and alerts, cards and code blocks drawn like the docs. Light and dark. Install it with `npm i -D @slide-ng/theme-adev` and use it with `theme: adev`.
 
 This theme is inspired by angular.dev. It is not an official Angular theme, and slide.ng is a community project that is not affiliated with or endorsed by Google or the Angular team.
 
@@ -10,7 +10,7 @@ This theme is inspired by angular.dev. It is not an official Angular theme, and 
 - Fonts (`theme.json`, from the font provider): `Inter` for text, `Inter Tight` for headings, `DM Mono` for code, weights 400 and 500.
 - Gradients: the hero (hot pink to electric violet) on `cover`, `end` and the picture side of `image-left` and `image-right`; the red, pink, purple text gradient on `intro`, `fact` and stat numbers; the pink to purple ring of numbered steps and `adev-button`.
 - Code: the same Shiki themes as angular.dev, `github-light` and `github-dark`, set in `theme.json` (white panel with dark text in light, `#24292e` panel with `#e1e4e8` text in dark, as in angular.dev's `docs-light-mode` and `docs-dark-mode`). A hairline border, 14px DM Mono, and a header bar with the file name in the purple to blue gradient (a fence title such as `[app.ts]`, or `<adev-code-card>`). Inline code is hot pink on a light purple tint.
-- Callouts, cards, buttons, steps, tables and links follow the docs styles.
+- Alerts, cards, buttons, steps, tables and links follow the docs styles.
 
 ## Layouts
 
@@ -30,15 +30,146 @@ Angular code is highlighted out of the box, with no setup file: the theme loads 
 
 ## Components
 
-| Tag                                          | What it is                                                                                      |
-| -------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `<adev-callout type="note" title="...">`     | A callout with a gradient rail. Types: `note`, `tip`, `important`, `warning`, `critical`        |
-| `<adev-card-grid cols="3">`, `<adev-card>`   | A grid of cards. `<adev-card label="Step 1" title="Fork" hot>` (`hot` adds the gradient border) |
-| `<adev-stat value="15+" label="PRs">`        | A big gradient number with a label                                                              |
-| `<adev-count-up to="240" suffix="+">`        | A number that counts up when its slide appears (shows the final value in print and previews)    |
-| `<adev-code-card title="app.ts" label="TS">` | A file header over a fenced code block                                                          |
-| `<adev-steps>`                               | An ordered list with numbered gradient rings                                                    |
-| `<adev-button variant="secondary">`          | The primary (gradient outline) or secondary button                                              |
+Every component is a tag you write in the Markdown of a slide. A tag that holds Markdown needs a blank line after the opening tag and before the closing tag.
+
+### Alerts
+
+`<adev-alert kind="note">` with nine kinds: `note`, `tip`, `todo`, `question`, `summary`, `tldr`, `critical`, `important` and `helpful`. `title="..."` replaces the label, `bare` drops it.
+
+```md
+<adev-alert kind="tip" title="Handy">Use `computed()` for derived state.</adev-alert>
+```
+
+A paragraph that starts with a kind in capitals, a colon and a space becomes an alert too (the kind is any of the nine, in capitals). The alert ends at the blank line, and braces are safe.
+
+```md
+NOTE: A paragraph that starts with the kind becomes an **alert**.
+```
+
+`<adev-callout type="warning" title="...">` is the older callout. Types: `note`, `tip`, `important`, `warning`, `critical`.
+
+### Pills
+
+```md
+<adev-pill-row>
+<adev-pill title="Signals"></adev-pill>
+<adev-pill href="https://angular.dev" title="angular.dev"></adev-pill>
+</adev-pill-row>
+```
+
+### API item labels
+
+`<adev-api-label kind="class">` is a small badge. Kinds: `class`, `const`, `decorator`, `directive`, `element`, `enum`, `function`, `interface`, `pipe`, `ng-module`, `type-alias`, `block`, and the status kinds `deprecated`, `developer-preview`, `experimental`, `stable`. `full` shows the name, `version="v20"` adds a version.
+
+```md
+<adev-api-label kind="deprecated" full version="v20"></adev-api-label>
+```
+
+### Keyboard keys
+
+`<kbd>Ctrl</kbd>` or `<adev-kbd>Ctrl</adev-kbd>`.
+
+### Decorative header
+
+`<adev-decorative-header title="What is Angular?" imgSrc="/logo.svg" imgAlt="...">Text</adev-decorative-header>`. `gradient` draws it on the brand panel.
+
+### Prefer and avoid
+
+A fence with `{prefer}` or `{avoid}` becomes a green or red card. `[file.ts]` is the card title.
+
+````md
+```ts {prefer} [counter.ts]
+const count = signal(0);
+```
+````
+
+The same cards as tags, with text or a code block inside: `<adev-prefer title="...">` and `<adev-avoid title="...">`.
+
+### Code card options
+
+A plain fence shows the file name from `[app.ts]` in the header. `{2,4-5}` highlights lines and dims the rest, `{lines:true}` shows line numbers, and `// [!code ++]` and `// [!code --]` mark added and removed lines. The copy button appears when you hover a card.
+
+````md
+```ts [user.ts] {2,4-5} {lines:true}
+name = input.required<string>(); // [!code ++]
+```
+````
+
+`<adev-code-card title="app.ts" label="TypeScript">` puts a header over a fence you write inside it.
+
+### Code groups
+
+Files in tabs, one fence per file:
+
+````md
+::code-group
+
+```ts [app.ts]
+export class App {}
+```
+
+```html [app.html]
+<h1>Hello</h1>
+```
+
+::
+````
+
+### Snippet import
+
+`<<< ./snippets/user.component.ts#greeting ts` shows a file, or one `#region`, in a code card with its file name and language. A deck that already wraps the line in a tag is left alone.
+
+### Tabs
+
+```md
+<adev-tab-group label="Package manager">
+<adev-tab label="npm">
+
+`npm install`
+
+</adev-tab>
+<adev-tab label="pnpm">
+
+`pnpm add`
+
+</adev-tab>
+</adev-tab-group>
+```
+
+Arrow keys, Home and End move between tabs. `clicks` on the group shows one tab per click.
+
+### Images
+
+Markdown images get a hairline border and rounded corners. Add `#small` or `#medium` to the URL for a smaller image: `![Alt](/photo.png#small)`.
+
+`<adev-image src="/photo.png" alt="..." caption="..." size="medium" />` adds a caption.
+
+### Video
+
+`<adev-video src="https://www.youtube.com/embed/ID" title="Talk" />` shows a poster card first and loads the player on click. Print and export show the poster only.
+
+### Mermaid
+
+Mermaid fences take their colours, fonts and pie slice colours from the theme, in light and dark, with no setup:
+
+````md
+```mermaid
+graph LR;
+  A[Request] --> B{Cached?};
+```
+````
+
+### Other
+
+| Tag                                        | What it is                                                                                      |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `<adev-card-grid cols="3">`, `<adev-card>` | A grid of cards. `<adev-card label="Step 1" title="Fork" hot>` (`hot` adds the gradient border) |
+| `<adev-stat value="15+" label="PRs">`      | A big gradient number with a label                                                              |
+| `<adev-count-up to="240" suffix="+">`      | A number that counts up when its slide appears (shows the final value in print and previews)    |
+| `<adev-steps>`                             | An ordered list with numbered gradient rings                                                    |
+| `<adev-button variant="secondary">`        | The primary (gradient outline) or secondary button                                              |
+
+Headings, tables, links (external links get an icon) and horizontal rules are styled like the docs.
 
 ## What is different
 
@@ -46,4 +177,4 @@ Angular code is highlighted out of the box, with no setup file: the theme loads 
 - Icons in callouts are drawn as SVG paths for this package; angular.dev uses the Material Symbols font.
 - Fonts load from the provider only 400 and 500 weights (one list covers all three families), so bold text is the medium weight.
 
-See the NOTICE file for the credits and licences. `examples/adev.md` in the themes repository shows every layout and component in light and dark.
+See the NOTICE file for the credits and licences. `examples/adev.md` in the themes repository shows every layout and component, and the slide button switches it between light and dark.

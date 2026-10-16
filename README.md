@@ -14,7 +14,7 @@ The official themes of [slide.ng](https://github.com/slide-ng/slide.ng), one npm
 | `shibainu`    | [`@slide-ng/theme-shibainu`](packages/theme-shibainu)       | [iiiiiiinès](https://github.com/iiiiiiines)          | 14                                            |
 | `bricks`      | [`@slide-ng/theme-bricks`](packages/theme-bricks)           | [iiiiiiinès](https://github.com/iiiiiiines)          | 9, and `<polygon-1 />` to `<polygon-11 />`    |
 | `apple-basic` | [`@slide-ng/theme-apple-basic`](packages/theme-apple-basic) | [Jeremy Meissner](https://github.com/JeremyMeissner) | 10                                            |
-| `adev`        | [`@slide-ng/theme-adev`](packages/theme-adev)               | Inspired by [angular.dev](https://angular.dev)       | 12, and seven components (`<adev-callout>`)   |
+| `adev`        | [`@slide-ng/theme-adev`](packages/theme-adev)               | Inspired by [angular.dev](https://angular.dev)       | 12, and 19 components (`<adev-alert>`)        |
 
 `default` is not here: it is the built-in look of slide.ng.
 
