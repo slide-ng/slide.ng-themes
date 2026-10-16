@@ -1,0 +1,11 @@
+{
+  "name": "adev",
+  "headmatter": {
+    "fonts": {
+      "sans": "Inter",
+      "serif": "Inter Tight",
+      "mono": "DM Mono",
+      "weights": "400, 500"
+    }
+  }
+}

@@ -1,0 +1,93 @@
+:root,
+.light {
+  color-scheme: light;
+  --adev-bright-blue: oklch(51.01% 0.274 263.83);
+  --adev-indigo-blue: oklch(51.64% 0.229 281.65);
+  --adev-electric-violet: oklch(53.18% 0.28 296.97);
+  --adev-french-violet: oklch(47.66% 0.246 305.88);
+  --adev-vivid-pink: oklch(69.02% 0.277 332.77);
+  --adev-hot-pink: oklch(59.91% 0.239 8.14);
+  --adev-hot-red: oklch(61.42% 0.238 15.34);
+  --adev-orange-red: oklch(63.32% 0.24 31.68);
+  --adev-super-green: oklch(79.12% 0.257 155.13);
+  --adev-cyan: oklch(67.05% 0.1206 181.34);
+  --adev-yellow: oklch(78.09% 0.163 65.69);
+
+  --adev-full: black;
+  --adev-primary: #151417;
+  --adev-secondary: #232125;
+  --adev-tertiary: #413e46;
+  --adev-quaternary: #746e7c;
+  --adev-quinary: #ccc9cf;
+  --adev-senary: #e4e3e6;
+  --adev-septenary: #f6f5f6;
+  --adev-octonary: #fbfbfb;
+  --adev-page: white;
+  --adev-hero: radial-gradient(circle at 60% bottom, #e90464 20%, #8514f5 100%);
+  --adev-on-hero: #fff;
+}
+
+html.dark,
+.dark {
+  color-scheme: dark;
+  --adev-bright-blue: color-mix(in srgb, oklch(51.01% 0.274 263.83), white 60%);
+  --adev-indigo-blue: color-mix(in srgb, oklch(51.64% 0.229 281.65), white 70%);
+  --adev-electric-violet: color-mix(in srgb, oklch(53.18% 0.28 296.97), white 70%);
+  --adev-french-violet: color-mix(in srgb, oklch(47.66% 0.246 305.88), white 70%);
+  --adev-vivid-pink: color-mix(in srgb, oklch(69.02% 0.277 332.77), white 70%);
+  --adev-hot-pink: color-mix(in srgb, oklch(59.91% 0.239 8.14), white 70%);
+  --adev-hot-red: color-mix(in srgb, oklch(61.42% 0.238 15.34), white 70%);
+  --adev-orange-red: color-mix(in srgb, oklch(63.32% 0.24 31.68), white 60%);
+  --adev-super-green: color-mix(in srgb, oklch(79.12% 0.257 155.13), white 70%);
+  --adev-cyan: color-mix(in srgb, oklch(67.05% 0.1206 181.34), white 65%);
+  --adev-yellow: color-mix(in srgb, oklch(78.09% 0.163 65.69), white 65%);
+
+  --adev-full: white;
+  --adev-primary: #fbfbfb;
+  --adev-secondary: #ccc9cf;
+  --adev-tertiary: #ccc9cf;
+  --adev-quaternary: #a39fa9;
+  --adev-quinary: #746e7c;
+  --adev-senary: #413e46;
+  --adev-septenary: #232125;
+  --adev-octonary: #151417;
+  --adev-page: #0f0f11;
+}
+
+:root,
+html.dark,
+.light,
+.dark {
+  --adev-grad-brand: linear-gradient(
+    90deg,
+    var(--adev-orange-red),
+    var(--adev-vivid-pink) 50%,
+    var(--adev-electric-violet)
+  );
+  --adev-grad-pink-purple: linear-gradient(
+    90deg,
+    var(--adev-vivid-pink),
+    var(--adev-electric-violet)
+  );
+  --adev-grad-purple-blue-v: linear-gradient(
+    0deg,
+    var(--adev-electric-violet),
+    var(--adev-bright-blue)
+  );
+  --adev-grad-diagonal: linear-gradient(
+    140deg,
+    var(--adev-vivid-pink) 0%,
+    var(--adev-electric-violet) 50%,
+    var(--adev-bright-blue) 100%
+  );
+  --adev-link: var(--adev-bright-blue);
+  --adev-kicker: var(--adev-electric-violet);
+  --adev-code-ink: color-mix(in srgb, var(--adev-hot-pink) 85%, var(--adev-full));
+  --adev-subtle-purple: color-mix(in srgb, var(--adev-bright-blue) 8%, var(--adev-page));
+  --slidev-theme-primary: var(--adev-electric-violet);
+  --slidev-code-background: var(--adev-octonary);
+  --slidev-code-foreground: var(--adev-primary);
+  --slidev-code-tab-text-color: var(--adev-tertiary);
+  --slidev-code-tab-active-text-color: var(--adev-primary);
+  --slidev-code-tab-divider: var(--adev-senary);
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@slide-ng/theme-adev",
+  "version": "0.1.0",
+  "description": "The look of angular.dev: Inter type, Angular gradients, cards and callouts, light and dark",
+  "license": "MIT",
+  "homepage": "https://github.com/slide-ng/themes#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slide-ng/themes.git",
+    "directory": "packages/theme-adev"
+  },
+  "bugs": "https://github.com/slide-ng/themes/issues",
+  "keywords": [
+    "slide-ng-theme",
+    "slide-ng"
+  ],
+  "files": [
+    "layouts",
+    "components",
+    "styles",
+    "public",
+    "theme.json",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "peerDependencies": {
+    "@slide-ng/core": "*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
