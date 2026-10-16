@@ -67,3 +67,7 @@ To add a layout to an existing theme, write `layouts/<layout>.ts` (copy a small 
 - Keep files small and comments short and plain.
 - One change per pull request, with a test where it makes sense. Fill in the pull request template.
 - Open an issue first for a new theme or a large change, so we can agree on the approach.
+
+## Recognising contributions
+
+Everyone who helps is listed in the Contributors section of the README, whatever the kind of help: code, docs, design, review or triage. To add someone, comment `@all-contributors please add @user for code` on an issue or pull request (use another type such as `doc`, `review` or `bug` when it fits). The bot opens a pull request that updates `.all-contributorsrc` and the README.
