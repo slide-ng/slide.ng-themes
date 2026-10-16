@@ -14,6 +14,6 @@ node ../slide.ng/bin/slide-ng.mjs build examples/seriph.md    # static site
 | `shibainu.md`    | [shibainu](../packages/theme-shibainu)       | 14     |
 | `bricks.md`      | [bricks](../packages/theme-bricks)           | 9      |
 | `apple-basic.md` | [apple-basic](../packages/theme-apple-basic) | 11     |
-| `adev.md`        | [adev](../packages/theme-adev)               | 36     |
+| `adev.md`        | [adev](../packages/theme-adev)               | 20     |
 
 The decks load the theme fonts from Google Fonts, so they look right with a network. `npm test` builds and checks all five (`tests/themes.mjs`).

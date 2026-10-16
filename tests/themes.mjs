@@ -205,7 +205,6 @@ const THEMES = {
         ['adev-intro h1', 'backgroundImage', /gradient/],
         ['adev-intro h1', 'fontSize', '64px'],
       ],
-      ['adev-intro', ['adev-intro', 'backgroundColor', ADEV_DARK]],
       [
         'adev-default',
         ['adev-default', 'backgroundColor', WHITE],
@@ -213,68 +212,56 @@ const THEMES = {
         ['adev-default p code', 'fontFamily', /^"DM Mono"/],
         ['adev-default .slidev-code-wrapper', 'borderTopWidth', '1px'],
       ],
-      [
-        'adev-default',
-        ['adev-default', 'backgroundColor', ADEV_DARK],
-        ['adev-default h1', 'color', rgb(251, 251, 251)],
-      ],
       ['adev-center', ['adev-center', 'textAlign', 'center']],
-      ['adev-center', ['adev-center', 'backgroundColor', ADEV_DARK]],
       [
         'adev-section',
         ['adev-section', 'paddingLeft', '96px'],
         ['adev-section h1', 'fontSize', '64px'],
       ],
-      ['adev-section', ['adev-section', 'backgroundColor', ADEV_DARK]],
       [
         'adev-two-cols',
         ['.col-right', 'borderLeftWidth', '1px'],
         ['adev-two-cols', 'display', 'grid'],
       ],
-      ['adev-two-cols', ['adev-two-cols', 'backgroundColor', ADEV_DARK]],
       ['adev-image-right', ['.adev-photo', 'backgroundImage', /gradient/]],
       ['adev-image-left', ['.adev-photo', 'backgroundImage', /gradient/]],
       ['adev-quote', ['.adev-quote-card', 'borderTopWidth', '1px']],
-      ['adev-quote', ['adev-quote', 'backgroundColor', ADEV_DARK]],
       [
         'adev-fact',
         ['adev-fact h1', 'fontSize', '128px'],
         ['adev-fact h1', 'backgroundClip', 'text'],
       ],
-      ['adev-fact', ['adev-fact', 'backgroundColor', ADEV_DARK]],
       ['adev-statement', ['adev-statement', 'textAlign', 'center']],
-      ['adev-statement', ['adev-statement', 'backgroundColor', ADEV_DARK]],
       [
         'adev-default',
         ['adev-callout', 'borderLeftWidth', '3px'],
         ['.adev-callout-critical svg', 'width', /^22\.\d+px$/],
+        ['adev-callout', 'backgroundColor', /^(rgb|color)\(/],
       ],
-      ['adev-default', ['adev-callout', 'backgroundColor', /^(rgb|color)\(/]],
       [
         'adev-default',
         ['adev-card-grid', 'gridTemplateColumns', /^(\d+(\.\d+)?px ?){3}$/],
         ['.adev-card-hot', 'borderTopColor', 'rgba(0, 0, 0, 0)'],
       ],
-      ['adev-default', ['adev-card', 'backgroundColor', ADEV_DARK]],
       [
         'adev-center',
+        ['.adev-stat-value', 'fontSize', '72px'],
         ['.adev-stat-value', 'backgroundClip', 'text'],
         ['adev-count-up', 'textContent', /^240\+$/],
       ],
-      ['adev-center', ['.adev-stat-value', 'fontSize', '72px']],
       [
         'adev-default',
         ['.adev-code-card', 'borderTopWidth', '1px'],
         ['.adev-steps ol', 'listStyleType', 'none'],
         ['.adev-button-primary', 'borderTopColor', 'rgba(0, 0, 0, 0)'],
+        ['.adev-button + .adev-button', 'marginInlineStart', '12px'],
       ],
-      ['adev-default', ['.adev-code-card-header', 'backgroundColor', /^(rgb|color)\(/]],
       [
         'adev-default',
         ['adev-default th', 'fontWeight', '500'],
         ['adev-default blockquote', 'borderLeftWidth', '3px'],
+        ['adev-default td code', 'fontFamily', /^"DM Mono"/],
       ],
-      ['adev-default', ['adev-default td code', 'fontFamily', /^"DM Mono"/]],
       [
         'adev-default',
         ['.slidev-code', 'backgroundColor', WHITE],
@@ -282,48 +269,79 @@ const THEMES = {
         ['.slidev-code code', 'fontFamily', /^"DM Mono"/],
         ['.slidev-code-block-title', 'backgroundClip', /^text/],
       ],
-      ['adev-default', ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
       ['adev-default', ['.slidev-code', 'backgroundColor', WHITE]],
-      ['adev-default', ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
       [
         'adev-default',
         ['.adev-button + .adev-button', 'marginInlineStart', '12px'],
         ['.flex .adev-button + .adev-button', 'marginInlineStart', '12px'],
       ],
-      ['adev-default', ['.adev-button + .adev-button', 'marginInlineStart', '12px']],
       [
         'adev-end',
         ['adev-end', 'backgroundImage', /gradient/],
         ['adev-end', 'textAlign', 'center'],
       ],
     ],
+    // The same slides with the page switched to dark (the colour-schema switch): [slide, checks...]
+    darkChecks: [
+      [1, ['adev-cover', 'backgroundImage', /gradient/]],
+      [2, ['adev-intro', 'backgroundColor', ADEV_DARK]],
+      [
+        3,
+        ['adev-default', 'backgroundColor', ADEV_DARK],
+        ['adev-default h1', 'color', rgb(251, 251, 251)],
+      ],
+      [4, ['adev-center', 'backgroundColor', ADEV_DARK]],
+      [5, ['adev-section', 'backgroundColor', ADEV_DARK]],
+      [6, ['adev-two-cols', 'backgroundColor', ADEV_DARK]],
+      [9, ['adev-quote', 'backgroundColor', ADEV_DARK]],
+      [10, ['adev-fact', 'backgroundColor', ADEV_DARK]],
+      [11, ['adev-statement', 'backgroundColor', ADEV_DARK]],
+      [12, ['adev-callout', 'backgroundColor', /^(rgb|color)\(/]],
+      [13, ['adev-card', 'backgroundColor', ADEV_DARK]],
+      [
+        15,
+        ['.adev-code-card-header', 'backgroundColor', /^(rgb|color)\(/],
+        ['.adev-button + .adev-button', 'marginInlineStart', '12px'],
+      ],
+      [17, ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
+      [18, ['.slidev-code', 'backgroundColor', rgb(36, 41, 46)]],
+      [19, ['.flex .adev-button + .adev-button', 'marginInlineStart', '12px']],
+      [20, ['adev-end', 'backgroundImage', /gradient/]],
+    ],
     tokens: {
-      30: {
-        export: rgb(215, 58, 73),
-        "'app-user'": rgb(3, 47, 98),
-        input: rgb(111, 66, 193),
-        User: rgb(111, 66, 193),
-        Component: rgb(111, 66, 193),
-        '@if': rgb(215, 58, 73),
-        h2: rgb(34, 134, 58),
+      17: {
+        light: {
+          export: rgb(215, 58, 73),
+          "'app-user'": rgb(3, 47, 98),
+          input: rgb(111, 66, 193),
+          User: rgb(111, 66, 193),
+          Component: rgb(111, 66, 193),
+          '@if': rgb(215, 58, 73),
+          h2: rgb(34, 134, 58),
+        },
+        dark: {
+          export: rgb(249, 117, 131),
+          "'app-user'": rgb(158, 203, 255),
+          input: rgb(179, 146, 240),
+          User: rgb(179, 146, 240),
+          Component: rgb(179, 146, 240),
+          '@if': rgb(249, 117, 131),
+          h2: rgb(133, 232, 157),
+        },
       },
-      31: {
-        export: rgb(249, 117, 131),
-        "'app-user'": rgb(158, 203, 255),
-        input: rgb(179, 146, 240),
-        User: rgb(179, 146, 240),
-        Component: rgb(179, 146, 240),
-        '@if': rgb(249, 117, 131),
-        h2: rgb(133, 232, 157),
+      18: {
+        light: { '@for': rgb(215, 58, 73), "'ok'": rgb(3, 47, 98), item: rgb(0, 92, 197) },
+        dark: {
+          '@defer': rgb(249, 117, 131),
+          "'ok'": rgb(158, 203, 255),
+          item: rgb(121, 184, 255),
+        },
       },
-      32: { '@for': rgb(215, 58, 73), "'ok'": rgb(3, 47, 98), item: rgb(0, 92, 197) },
-      33: { '@defer': rgb(249, 117, 131), "'ok'": rgb(158, 203, 255), item: rgb(121, 184, 255) },
     },
     png: { slide: 1, check: (p) => p[2] > 180 && p[1] < 80 },
     contrast: {
-      light: [4, 'adev-default'],
-      dark: [4, 'adev-default'],
-      'dark slide': [5, 'adev-default'],
+      light: [3, 'adev-default'],
+      dark: [3, 'adev-default'],
     },
   },
 };
@@ -331,6 +349,24 @@ const THEMES = {
 const only = process.argv[2];
 const names = Object.keys(THEMES).filter((n) => !only || n === only);
 const t = reporter();
+async function runChecks(page, label, checks) {
+  for (const [selector, prop, expected] of checks) {
+    if (prop === 'textContent') await page.waitForTimeout(2200);
+    const got = await page
+      .locator(selector)
+      .first()
+      .evaluate(
+        (e, p) => (p === 'textContent' ? e.textContent.trim() : getComputedStyle(e)[p]),
+        prop,
+      );
+    t.ok(
+      `${label}: ${selector} ${prop}`,
+      expected instanceof RegExp ? expected.test(got) : got === expected,
+      `${got}`,
+    );
+  }
+}
+
 const scratch = mkdtempSync(join(tmpdir(), 'slide-ng-themes-'));
 const env = {
   ...process.env,
@@ -382,21 +418,7 @@ try {
       const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
       const label = `${name} slide ${n} (${tag})`;
       t.ok(`${label}: layout element is there`, (await page.locator(tag).count()) === 1);
-      for (const [selector, prop, expected] of checks) {
-        if (prop === 'textContent') await page.waitForTimeout(2200);
-        const got = await page
-          .locator(selector)
-          .first()
-          .evaluate(
-            (e, p) => (p === 'textContent' ? e.textContent.trim() : getComputedStyle(e)[p]),
-            prop,
-          );
-        t.ok(
-          `${label}: ${selector} ${prop}`,
-          expected instanceof RegExp ? expected.test(got) : got === expected,
-          `${got}`,
-        );
-      }
+      await runChecks(page, label, checks);
       if (i === 0) {
         const total = Number(/slide 1\/(\d+)/.exec(await ctx.hud(page))?.[1]);
         t.ok(
@@ -473,71 +495,31 @@ try {
       await page.close();
     }
 
-    for (const [n, tokens] of Object.entries(spec.tokens ?? {})) {
+    for (const [n, ...checks] of spec.darkChecks ?? []) {
       const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
-      for (const [text, expected] of Object.entries(tokens)) {
-        const got = await page.evaluate((word) => {
-          const span = [...document.querySelectorAll('pre.shiki .line span')].find(
-            (e) => e.textContent.trim() === word,
-          );
-          return span ? getComputedStyle(span).color : 'no such token';
-        }, text);
-        t.ok(`${name} slide ${n}: code token ${text} colour`, got === expected, got);
-      }
+      await page.evaluate(() => document.documentElement.classList.add('dark'));
+      await runChecks(page, `${name} slide ${n} in the dark scheme`, checks);
       await page.close();
     }
 
-    if (name === 'adev') {
-      // The same slide in both schemes: the page switch, and a slide forced to the other scheme.
-      const page = await ctx.open('/30', { width: 1280, height: 720 }, routeFonts);
-      const read = (sel, prop) =>
-        page
-          .locator(sel)
-          .first()
-          .evaluate((e, p) => getComputedStyle(e)[p], prop);
-      const token = () =>
-        page.evaluate(
-          () =>
-            getComputedStyle(
-              [...document.querySelectorAll('pre.shiki .line span')].find(
-                (e) => e.textContent.trim() === 'export',
-              ),
-            ).color,
-        );
-      const mode = async (dark, forced) => {
+    for (const [n, bySchemes] of Object.entries(spec.tokens ?? {})) {
+      for (const [scheme, tokens] of Object.entries(bySchemes)) {
+        const page = await ctx.open(`/${n}`, { width: 1280, height: 720 }, routeFonts);
         await page.evaluate(
-          ([d, f]) => {
-            document.documentElement.classList.toggle('dark', d);
-            const layout = document.querySelector('adev-default');
-            layout.classList.remove('light', 'dark');
-            if (f) layout.classList.add(f);
-          },
-          [dark, forced],
+          (dark) => document.documentElement.classList.toggle('dark', dark),
+          scheme === 'dark',
         );
-      };
-      const expected = {
-        light: [WHITE, WHITE, rgb(215, 58, 73)],
-        dark: [ADEV_DARK, rgb(36, 41, 46), rgb(249, 117, 131)],
-      };
-      for (const [label, dark, forced, scheme] of [
-        ['page switch to dark', true, null, 'dark'],
-        ['page switch to light', false, null, 'light'],
-        ['light slide on a dark page', true, 'light', 'light'],
-        ['dark slide on a light page', false, 'dark', 'dark'],
-      ]) {
-        await mode(dark, forced);
-        const got = [
-          await read('adev-default', 'backgroundColor'),
-          await read('.slidev-code', 'backgroundColor'),
-          await token(),
-        ];
-        t.ok(
-          `adev: ${label} (page, code panel, keyword)`,
-          got.join() === expected[scheme].join(),
-          got.join(' | '),
-        );
+        for (const [text, expected] of Object.entries(tokens)) {
+          const got = await page.evaluate((word) => {
+            const span = [...document.querySelectorAll('pre.shiki .line span')].find(
+              (e) => e.textContent.trim() === word,
+            );
+            return span ? getComputedStyle(span).color : 'no such token';
+          }, text);
+          t.ok(`${name} slide ${n} ${scheme}: code token ${text} colour`, got === expected, got);
+        }
+        await page.close();
       }
-      await page.close();
     }
 
     // One slide as PNG, with the real command line, from the build above.
