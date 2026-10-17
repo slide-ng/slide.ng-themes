@@ -1,4 +1,4 @@
-# Builds the adev showcase deck and publishes it to GitHub Pages at https://slide-ng.github.io/slide.ng-themes/
+# Builds the adev showcase deck and publishes it to GitHub Pages at https://slide-ng.github.io/themes/
 # Turn it on once: Settings > Pages > Source: GitHub Actions.
 name: Pages
 

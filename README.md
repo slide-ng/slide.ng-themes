@@ -5,7 +5,7 @@
 
 # slide.ng themes
 
-Live demos of all five themes: <https://slide-ng.github.io/slide.ng-themes/>
+Live demos of all five themes: <https://slide-ng.github.io/themes/>
 
 The official themes of [slide.ng](https://github.com/slide-ng/slide.ng), one npm package each. Four are ports of the official
 [Slidev themes](https://github.com/slidevjs/themes), rebuilt for slide.ng's theme contract (layouts, components and CSS as Angular code); `adev` is new and inspired by [angular.dev](https://angular.dev).
@@ -69,7 +69,7 @@ Thanks to everyone who has helped. This project follows the [all-contributors](h
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/erkamyaman"><img src="https://avatars.githubusercontent.com/u/88717125?v=4?s=100" width="100px;" alt="Erkam Yaman"/><br /><sub><b>Erkam Yaman</b></sub></a><br /><a href="https://github.com/slide-ng/slide.ng-themes/commits?author=erkamyaman" title="Code">💻</a> <a href="https://github.com/slide-ng/slide.ng-themes/commits?author=erkamyaman" title="Documentation">📖</a> <a href="#maintenance-erkamyaman" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/erkamyaman"><img src="https://avatars.githubusercontent.com/u/88717125?v=4?s=100" width="100px;" alt="Erkam Yaman"/><br /><sub><b>Erkam Yaman</b></sub></a><br /><a href="https://github.com/slide-ng/themes/commits?author=erkamyaman" title="Code">💻</a> <a href="https://github.com/slide-ng/themes/commits?author=erkamyaman" title="Documentation">📖</a> <a href="#maintenance-erkamyaman" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>

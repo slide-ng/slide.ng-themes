@@ -3,14 +3,14 @@
   "version": "0.1.1",
   "description": "Flat coloured shapes with a serif title font: the bricks theme of Slidev, ported to slide.ng",
   "license": "MIT",
-  "homepage": "https://github.com/slide-ng/slide.ng-themes/tree/main/packages/theme-bricks#readme",
+  "homepage": "https://github.com/slide-ng/themes/tree/main/packages/theme-bricks#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slide-ng/slide.ng-themes.git",
+    "url": "git+https://github.com/slide-ng/themes.git",
     "directory": "packages/theme-bricks"
   },
   "bugs": {
-    "url": "https://github.com/slide-ng/slide.ng-themes/issues"
+    "url": "https://github.com/slide-ng/themes/issues"
   },
   "keywords": [
     "slide-ng-theme",

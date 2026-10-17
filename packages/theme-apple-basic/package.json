@@ -3,14 +3,14 @@
   "version": "0.1.1",
   "description": "A plain white theme with photo layouts: the apple-basic theme of Slidev, ported to slide.ng",
   "license": "MIT",
-  "homepage": "https://github.com/slide-ng/slide.ng-themes/tree/main/packages/theme-apple-basic#readme",
+  "homepage": "https://github.com/slide-ng/themes/tree/main/packages/theme-apple-basic#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slide-ng/slide.ng-themes.git",
+    "url": "git+https://github.com/slide-ng/themes.git",
     "directory": "packages/theme-apple-basic"
   },
   "bugs": {
-    "url": "https://github.com/slide-ng/slide.ng-themes/issues"
+    "url": "https://github.com/slide-ng/themes/issues"
   },
   "keywords": [
     "slide-ng-theme",

@@ -1,5 +1,5 @@
 // Browser test of the theme switcher of the demo decks (examples/layers + examples/components, not part of the theme packages).
-// It builds three decks the way the Pages workflow does (base /slide.ng-themes/<name>/, hash router), serves them from a
+// It builds three decks the way the Pages workflow does (base /themes/<name>/, hash router), serves them from a
 // temporary folder and checks the pill, the menu, the keyboard, the jump to the other deck with the slide number, and print.
 import { execFileSync } from 'node:child_process';
 import {
@@ -26,7 +26,7 @@ const { makeContext } = await import(pathToFileURL(join(core, 'tests/e2e/helpers
 
 const NAMES = ['adev', 'seriph', 'shibainu', 'bricks', 'apple-basic'];
 const BUILT = ['seriph', 'shibainu', 'adev'];
-const BASE = '/slide.ng-themes';
+const BASE = '/themes';
 
 const t = reporter();
 const scratch = mkdtempSync(join(tmpdir(), 'slide-ng-demo-switcher-'));
@@ -53,7 +53,7 @@ for (const name of BUILT) {
   }
 }
 
-// A static server that answers /slide.ng-themes/<name>/ with that folder's index.html.
+// A static server that answers /themes/<name>/ with that folder's index.html.
 const types = {
   '.js': 'text/javascript',
   '.css': 'text/css',

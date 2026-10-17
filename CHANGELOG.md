@@ -6,6 +6,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ### Changed
 
+- The repository is now `slide-ng/themes` (it was `slide-ng/slide.ng-themes`); links point to the new name.
 - `@slide-ng/theme-adev` no longer sets `colorSchema: dark`. slide.ng now treats a theme's `colorSchema` as the only mode the theme has and locks decks to it; adev styles light and dark with its own switch, so a deck keeps its own page mode (`auto` unless it says otherwise).
 - The READMEs of `@slide-ng/theme-shibainu` and `@slide-ng/theme-bricks` say that a deck using them keeps their mode (dark and light).
 
@@ -31,6 +32,6 @@ The first version of the four ported themes.
 - Package checks (`tests/packages.test.mjs`) and a browser test of every theme against a slide.ng checkout (`tests/themes.mjs`).
 - Repository files for open source hosting: contribution guide, code of conduct, security policy, issue and pull request templates, a commit message check, git hooks and Prettier settings.
 
-[Unreleased]: https://github.com/slide-ng/slide.ng-themes/compare/v0.1.1...HEAD
-[0.1.1]: https://github.com/slide-ng/slide.ng-themes/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/slide-ng/slide.ng-themes/commits/main
+[Unreleased]: https://github.com/slide-ng/themes/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/slide-ng/themes/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/slide-ng/themes/commits/main

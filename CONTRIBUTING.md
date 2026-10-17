@@ -1,4 +1,4 @@
-# Contributing to slide.ng-themes
+# Contributing to slide.ng themes
 
 Thanks for helping. The rules of a theme are in slide.ng's `docs/THEMES.md` and `docs/WRITING-A-THEME.md`.
 
@@ -9,8 +9,8 @@ By taking part you agree to the [Code of Conduct](CODE_OF_CONDUCT.md). Report se
 You need Node.js 22.23.3 or newer (`.nvmrc` names the version CI uses). The browser test also needs a checkout of slide.ng with its dependencies installed, and a Chromium (`CHROME_PATH`).
 
 ```sh
-git clone https://github.com/slide-ng/slide.ng-themes.git
-cd slide.ng-themes
+git clone https://github.com/slide-ng/themes.git
+cd themes
 npm install          # links the packages into node_modules/@slide-ng
 SLIDE_NG_DIR=../slide.ng npm test
 ```

@@ -8,11 +8,7 @@ describe('detectSite', () => {
     assert.deepEqual(THEMES, ['adev', 'seriph', 'shibainu', 'bricks', 'apple-basic']);
   });
   it('reads GitHub Pages addresses and links to the siblings', () => {
-    for (const path of [
-      '/slide.ng-themes/bricks/',
-      '/slide.ng-themes/bricks/index.html',
-      '/slide.ng-themes/bricks',
-    ]) {
+    for (const path of ['/themes/bricks/', '/themes/bricks/index.html', '/themes/bricks']) {
       const site = detectSite(path);
       assert.equal(site?.theme, 'bricks', path);
       assert.equal(site?.url('apple-basic'), '../apple-basic/');
@@ -26,24 +22,17 @@ describe('detectSite', () => {
     }
   });
   it('reads a theme name with a dash on both sites', () => {
-    assert.equal(detectSite('/slide.ng-themes/apple-basic/')?.theme, 'apple-basic');
+    assert.equal(detectSite('/themes/apple-basic/')?.theme, 'apple-basic');
     assert.equal(detectSite('/demos/theme-apple-basic/')?.theme, 'apple-basic');
   });
   it('returns null where it does not know the place', () => {
-    for (const path of [
-      '/',
-      '/1',
-      '/adev/',
-      '/demos/theme-nope/',
-      '/slide.ng-themes/',
-      '/demos/tour/',
-    ])
+    for (const path of ['/', '/1', '/adev/', '/demos/theme-nope/', '/themes/', '/demos/tour/'])
       assert.equal(detectSite(path), null, path);
   });
 });
 
 describe('demoUrl', () => {
-  const pages = detectSite('/slide.ng-themes/seriph/');
+  const pages = detectSite('/themes/seriph/');
   const docs = detectSite('/demos/theme-seriph/');
   it('keeps the slide number in the hash', () => {
     assert.equal(demoUrl(pages, 'adev', 12), '../adev/#/12');
