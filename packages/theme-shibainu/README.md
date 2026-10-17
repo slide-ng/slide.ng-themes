@@ -7,7 +7,7 @@ and font settings are ported to Angular; see the MIT notice in the NOTICE file a
 
 ## What is ported
 
-- Fonts (`theme.json`, loaded from the font provider): `Titillium Web` for text, `Fira Code` for code. Colour schema `dark` by default.
+- Fonts (`theme.json`, loaded from the font provider): `Titillium Web` for text, `Fira Code` for code. Colour schema `dark`: the theme has dark colours only, so a deck that uses it stays dark (slide.ng warns when a deck asks for another mode).
 - Colours: text `#402312` on light backgrounds, `#EBEEF2` on dark ones, the brown and tan palette of the original.
 - Small uppercase `h3`, and a 4em title in `quote` and a 3em title in `section-3`, as in the original.
 - Layouts, with the same names and content boxes: `cover`, `default`, `center`, `section`, `section-2`, `section-3`, `default-2` to `default-7`, `right`, `quote`.
