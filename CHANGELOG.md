@@ -4,6 +4,11 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+### Changed
+
+- `@slide-ng/theme-adev` no longer sets `colorSchema: dark`. slide.ng now treats a theme's `colorSchema` as the only mode the theme has and locks decks to it; adev styles light and dark with its own switch, so a deck keeps its own page mode (`auto` unless it says otherwise).
+- The READMEs of `@slide-ng/theme-shibainu` and `@slide-ng/theme-bricks` say that a deck using them keeps their mode (dark and light).
+
 ## [0.1.1] - 2026-10-17
 
 ### Added

@@ -190,7 +190,8 @@ const THEMES = {
     png: { slide: 2, check: (p) => p[0] === 74 && p[1] === 111 && p[2] === 165 },
   },
   adev: {
-    dark: true,
+    // No colorSchema in theme.json (the theme has its own light and dark switch): the page follows the browser, light here.
+    dark: false,
     fontUrl: ['Inter', 'Inter+Tight', 'DM+Mono', 'wght@400'],
     fonts: { sans: 'Inter', mono: 'DM Mono' },
     slides: [

@@ -7,7 +7,7 @@ values and font settings are ported to Angular; see the MIT notice in the NOTICE
 
 ## What is ported
 
-- Fonts (`theme.json`, loaded from the font provider): `Signika Negative` for text, `Sigmar One` for headings, `Fira Code` for code. Colour schema `light`.
+- Fonts (`theme.json`, loaded from the font provider): `Signika Negative` for text, `Sigmar One` for headings, `Fira Code` for code. Colour schema `light`: the theme has light colours only, so a deck that uses it stays light (slide.ng warns when a deck asks for another mode).
 - Layouts with the same names and slots: `cover`, `intro` (`::left::`), `default`, `section` (`::right::`), `items` (`cols`, `::items::`),
   `quote`, `fact`, `statement` and `blank`.
 - The eleven shapes of the original `Polygon1` to `Polygon11` components, as `<polygon-1 />` to `<polygon-11 />` (kebab case, like Slidev also accepts).
