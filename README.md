@@ -102,3 +102,5 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md). Changes follow the [Code of Conduct](CO
 ## Disclaimer
 
 slide.ng is an independent open-source project. It is not affiliated with or endorsed by the Angular team or Google, or by Slidev. Angular is a trademark of Google LLC; Slidev is a project of its own maintainers. The names are used only to describe what the themes are based on. This is a plain notice, not legal advice.
+
+The demo decks have a small theme switcher in the top left corner to jump to the other themes at the same slide. It lives in `examples/layers` and `examples/components`, is for the demos only and is not part of the theme packages.
