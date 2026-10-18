@@ -7,7 +7,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ### Changed
 
 - The repository is now `slide-ng/themes` (it was `slide-ng/slide.ng-themes`); links point to the new name.
-- `@slide-ng/theme-adev` no longer sets `colorSchema: dark`. slide.ng now treats a theme's `colorSchema` as the only mode the theme has and locks decks to it; adev styles light and dark with its own switch, so a deck keeps its own page mode (`auto` unless it says otherwise).
+- `@slide-ng/theme-adev` sets `colorSchema: dark` again, so the dock has no sun or moon toggle: the theme's own button on the slides is the only dark and light switch, and it recolours the slides only.
 - The READMEs of `@slide-ng/theme-shibainu` and `@slide-ng/theme-bricks` say that a deck using them keeps their mode (dark and light).
 
 ## [0.1.1] - 2026-10-17
