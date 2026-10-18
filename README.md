@@ -93,7 +93,7 @@ Layout names, slots, CSS values and font settings follow the Slidev themes, whic
 The designs are by Anthony Fu (seriph), iiiiiiinès (shibainu, bricks) and Jeremy Meissner (apple-basic). The Angular code is new. `adev` is inspired by angular.dev (Angular, MIT, Google LLC) and is not an official Angular theme; slide.ng is not affiliated with or endorsed by Google or the Angular team.
 The images of the originals are CC BY-NC-SA 4.0 and are not copied here; the ports draw CSS gradients instead (see [NOTICE](NOTICE)).
 
-This repository is MIT licensed, see [LICENSE](LICENSE).
+MIT License © 2026 [Erkam Yaman](https://github.com/erkamyaman), see [LICENSE](LICENSE).
 
 ## Contributing
 

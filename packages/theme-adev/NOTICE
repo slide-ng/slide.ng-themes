@@ -1,5 +1,5 @@
 @slide-ng/theme-adev
-Copyright (c) 2026 slide.ng contributors, MIT License (see LICENSE).
+Copyright (c) 2026-PRESENT Erkam Yaman, MIT License (see LICENSE).
 
 This theme is inspired by angular.dev, the Angular documentation site. It is not an official Angular
 theme. slide.ng is a community project and is not affiliated with or endorsed by Google or the Angular team.
@@ -54,7 +54,7 @@ The code of this package is licensed under the MIT License, reproduced in full:
 
 MIT License
 
-Copyright (c) 2026 slide.ng contributors
+Copyright (c) 2026-PRESENT Erkam Yaman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

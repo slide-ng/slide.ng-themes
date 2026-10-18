@@ -1,5 +1,5 @@
 @slide-ng/theme-apple-basic
-Copyright (c) 2026 slide.ng contributors, MIT License (see LICENSE).
+Copyright (c) 2026-PRESENT Erkam Yaman, MIT License (see LICENSE).
 
 This theme is a port of the Slidev theme @slidev/theme-apple-basic (https://github.com/slidevjs/themes),
 designed by Jeremy Meissner (https://github.com/JeremyMeissner). The layout names and slots, CSS values and font

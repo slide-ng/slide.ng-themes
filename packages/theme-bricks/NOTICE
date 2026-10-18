@@ -1,5 +1,5 @@
 @slide-ng/theme-bricks
-Copyright (c) 2026 slide.ng contributors, MIT License (see LICENSE).
+Copyright (c) 2026-PRESENT Erkam Yaman, MIT License (see LICENSE).
 
 This theme is a port of the Slidev theme @slidev/theme-bricks (https://github.com/slidevjs/themes),
 designed by iiiiiiinès (https://github.com/iiiiiiines). The layout names and slots, CSS values and font

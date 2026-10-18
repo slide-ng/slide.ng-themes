@@ -2,6 +2,7 @@
   "name": "@slide-ng/theme-shibainu",
   "version": "1.0.0",
   "description": "A dark theme in brown and tan: the shibainu theme of Slidev, ported to slide.ng",
+  "author": "Erkam Yaman (https://github.com/erkamyaman)",
   "license": "MIT",
   "homepage": "https://github.com/slide-ng/themes/tree/main/packages/theme-shibainu#readme",
   "repository": {

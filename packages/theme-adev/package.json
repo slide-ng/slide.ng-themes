@@ -2,6 +2,7 @@
   "name": "@slide-ng/theme-adev",
   "version": "1.0.0",
   "description": "The look of angular.dev: Inter type, Angular gradients, alerts, cards and code blocks, light and dark",
+  "author": "Erkam Yaman (https://github.com/erkamyaman)",
   "license": "MIT",
   "homepage": "https://github.com/slide-ng/themes/tree/main/packages/theme-adev#readme",
   "repository": {

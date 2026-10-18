@@ -2,6 +2,7 @@
   "name": "@slide-ng/theme-apple-basic",
   "version": "1.0.0",
   "description": "A plain white theme with photo layouts: the apple-basic theme of Slidev, ported to slide.ng",
+  "author": "Erkam Yaman (https://github.com/erkamyaman)",
   "license": "MIT",
   "homepage": "https://github.com/slide-ng/themes/tree/main/packages/theme-apple-basic#readme",
   "repository": {

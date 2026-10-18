@@ -1,5 +1,5 @@
 slide.ng themes
-Copyright (c) 2026 slide.ng contributors, MIT License (see LICENSE).
+Copyright (c) 2026-PRESENT Erkam Yaman, MIT License (see LICENSE).
 
 The themes in packages/ rebuild the official Slidev themes (https://github.com/slidevjs/themes),
 which are licensed under the MIT License:
