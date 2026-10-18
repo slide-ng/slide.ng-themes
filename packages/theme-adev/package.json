@@ -1,6 +1,6 @@
 {
   "name": "@slide-ng/theme-adev",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "The look of angular.dev: Inter type, Angular gradients, alerts, cards and code blocks, light and dark",
   "license": "MIT",
   "homepage": "https://github.com/slide-ng/themes/tree/main/packages/theme-adev#readme",

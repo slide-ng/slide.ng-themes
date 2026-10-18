@@ -4,6 +4,10 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-18
+
+The first stable release. The five themes are versioned together and are tested with `@slide-ng/core` 1.0.
+
 ### Changed
 
 - The repository is now `slide-ng/themes` (it was `slide-ng/slide.ng-themes`); links point to the new name.
@@ -32,6 +36,7 @@ The first version of the four ported themes.
 - Package checks (`tests/packages.test.mjs`) and a browser test of every theme against a slide.ng checkout (`tests/themes.mjs`).
 - Repository files for open source hosting: contribution guide, code of conduct, security policy, issue and pull request templates, a commit message check, git hooks and Prettier settings.
 
-[Unreleased]: https://github.com/slide-ng/themes/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/slide-ng/themes/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/slide-ng/themes/compare/v0.1.1...v1.0.0
 [0.1.1]: https://github.com/slide-ng/themes/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/slide-ng/themes/commits/main
