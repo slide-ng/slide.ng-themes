@@ -7,6 +7,9 @@
       "mono": "PT Mono",
       "italic": true,
       "weights": "400, 700"
+    },
+    "themeConfig": {
+      "primary": "#5d8392"
     }
   }
 }

@@ -1,4 +1,5 @@
 /* seriph: serif fonts (theme.json), a blue-grey accent and coloured headings. Port of @slidev/theme-seriph. */
+/* The accent is `themeConfig.primary` in theme.json, which slide.ng 2.0 sets on body and a deck can change. This default is for 1.x. */
 :root {
   --slidev-theme-primary: #5d8392;
 }

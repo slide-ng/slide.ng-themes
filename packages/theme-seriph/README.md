@@ -8,7 +8,9 @@ ported to Angular; see the MIT notice in the NOTICE file at the root of this rep
 ## What is ported
 
 - Fonts (`theme.json`, loaded from the font provider like Slidev): `PT Serif` for text and headings, `PT Mono` for code, italic, weights 400 and 700.
-- Colour: `--slidev-theme-primary: #5d8392`, used for headings (`h1`), links on hover and the quote bar.
+- Colour: `themeConfig.primary`, `#5d8392` by default (in `theme.json`, as in the original), used for headings (`h1`), links on hover and the quote bar.
+  With slide.ng 2.0 a deck changes it with `themeConfig: { primary: '#b5523b' }` in its headmatter, which also recolours the progress bar
+  and the controls. slide.ng 1.x does not read `themeConfig`; there `--slidev-theme-primary: #5d8392` comes from `styles/index.css`.
 - Layout `cover`: centered title over a dimmed `background` (a picture address or a colour), as in the original.
 - `intro`, `section`, `statement`, `fact`, `quote` and `default` are the built-in layouts; the original does not change them either, only the heading colour.
 
@@ -16,7 +18,6 @@ ported to Angular; see the MIT notice in the NOTICE file at the root of this rep
 
 - The original's default cover is a random photo from an online collection. That photo is a licensed asset and is not used. A cover without
   `background` gets a blue-grey gradient drawn in CSS (`.seriph-cover-plain` in `styles/index.css`). Set `background:` to use your own picture.
-- `themeConfig.primary` is not read (slide.ng has no `themeConfig` yet): set `--slidev-theme-primary` in a `<style>` block or in your own CSS instead.
 - Code colours come from Shiki, not from the original's Prism style sheet.
 
 No image or other asset of the original theme is part of this folder.
