@@ -1,7 +1,9 @@
 /* shibainu: brown and tan, a light grey text colour, small uppercase h3. Port of @slidev/theme-shibainu.
    The backgrounds are our own circles and ellipses (CSS gradients) in the same palette; no image of the original is used. */
+/* The accent (--slidev-theme-primary) is the light grey: slide.ng draws its progress bar, the presenter's next click and the
+   controls of the dark bar in it, and only the light grey stands out on every background of the theme. */
 :root {
-  --slidev-theme-primary: #402312;
+  --slidev-theme-primary: #ebeef2;
   --shibainu-light: #ebeef2;
   --shibainu-tan: #bf926b;
   --shibainu-mid: #8c6645;
@@ -12,7 +14,17 @@
 .slidev-layout {
   position: relative;
   height: 100%;
-  color: var(--slidev-theme-primary);
+  color: var(--shibainu-dark);
+}
+
+/* The presenter's click preview: the badge of the next click is the light accent, so its number is dark. */
+.slide-ng-ghost-badge-next {
+  color: var(--shibainu-dark);
+}
+
+/* The subtitle under a heading keeps the full text colour: dimmed, it fell to about 2:1 on the brown and tan backgrounds. */
+.slidev-layout h1 + p {
+  opacity: 1;
 }
 
 .slidev-layout h3 {

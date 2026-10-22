@@ -69,6 +69,7 @@ const THEMES = {
         'shibainu-default',
         ['shibainu-default', 'backgroundColor', BROWN],
         ['shibainu-default', 'color', LIGHT],
+        ['h1 + p', 'opacity', '1'],
         ['shibainu-default > div', 'width', /^(5[0-9]{2}|6[0-9]{2})(\.\d+)?px$/],
       ],
       [
