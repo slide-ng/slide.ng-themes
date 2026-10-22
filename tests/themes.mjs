@@ -184,6 +184,7 @@ const THEMES = {
       [
         'apple-three-images',
         ['apple-three-images > div:first-child', 'backgroundColor', rgb(74, 111, 165)],
+        ['apple-three-images > div:first-child', 'marginLeft', '56px'],
         ['apple-three-images .grid > div:last-child', 'backgroundColor', rgb(107, 143, 113)],
       ],
     ],

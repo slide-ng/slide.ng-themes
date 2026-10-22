@@ -29,7 +29,7 @@
   display: inline-block;
   width: 1em;
   height: 1em;
-  margin-left: 0.2rem;
+  margin-inline-start: 0.2rem;
   vertical-align: middle;
   background: currentColor;
   -webkit-mask: var(--adev-external-icon) center / contain no-repeat;

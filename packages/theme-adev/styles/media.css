@@ -142,7 +142,7 @@
     var(--adev-septenary);
   color: var(--adev-primary);
   font: inherit;
-  text-align: left;
+  text-align: start;
 }
 button.adev-video-poster {
   cursor: pointer;

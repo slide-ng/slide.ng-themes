@@ -89,7 +89,7 @@
 
 .slidev-layout.quote h1 + p {
   margin-top: 1.5rem;
-  margin-left: 1.5rem;
+  margin-inline-start: 1.5rem;
 }
 
 .slidev-layout.section h1 {
@@ -98,7 +98,8 @@
   font-weight: 500;
 }
 
-/* The photo beside the text: a margin on the top, right and bottom. */
+/* The photo beside the text: a margin on the top, the outer side and the bottom (mirrored in a right-to-left deck). */
 .apple-photo {
-  margin: 3.5rem 3.5rem 3.5rem 0;
+  margin-block: 3.5rem;
+  margin-inline: 0 3.5rem;
 }
