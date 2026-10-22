@@ -1,5 +1,12 @@
 /* apple-basic: the look of Keynote's "Basic White": Helvetica Neue, bold headings, plain white slides.
    Port of @slidev/theme-apple-basic. */
+/* The accent of slide.ng's own parts (progress bar, presenter's next click, sync menu): Apple's link blue, 4.5:1 or more in each mode. */
+:root {
+  --slidev-theme-primary: #0066cc;
+}
+html.dark {
+  --slidev-theme-primary: #2997ff;
+}
 .slidev-layout {
   padding: 2.5rem 3.5rem;
   font-size: 1.1rem;
