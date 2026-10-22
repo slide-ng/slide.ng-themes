@@ -86,7 +86,9 @@ html[data-adev-scheme] {
   --adev-kicker: var(--adev-electric-violet);
   --adev-code-ink: color-mix(in srgb, var(--adev-hot-pink) 85%, var(--adev-full));
   --adev-subtle-purple: color-mix(in srgb, var(--adev-bright-blue) 8%, var(--adev-page));
-  --slidev-theme-primary: #8514f5;
+  /* slide.ng's accent (progress bar, presenter's next click, sync menu). Its menus and bar stay dark (`colorSchema: dark`),
+     so a lighter violet than #8514f5: 4.8:1 on them, 3.9:1 on a light slide. */
+  --slidev-theme-primary: #9d5cff;
   --slidev-code-background: var(--adev-code-bg);
   --slidev-code-foreground: var(--adev-primary);
   --slidev-code-tab-text-color: var(--adev-tertiary);
