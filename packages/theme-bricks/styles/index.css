@@ -1,6 +1,8 @@
 /* bricks: bright flat shapes (red, yellow, blue, pink), a serif font for headings. Port of @slidev/theme-bricks.
    The backgrounds are our own CSS gradients in the same palette; no image of the original is used. */
+/* The accent of slide.ng's own parts (progress bar, presenter's next click, sync menu): a deeper blue than the shapes', for 5:1 on white. */
 :root {
+  --slidev-theme-primary: #3a6fb0;
   --bricks-red: #f07a6b;
   --bricks-yellow: #f9d56e;
   --bricks-blue: #72a6e2;
