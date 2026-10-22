@@ -1,6 +1,6 @@
 {
   "name": "@slide-ng/theme-bricks",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Flat coloured shapes with a serif title font: the bricks theme of Slidev, ported to slide.ng",
   "author": "Erkam Yaman (https://github.com/erkamyaman)",
   "license": "MIT",

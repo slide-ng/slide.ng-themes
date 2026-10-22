@@ -1,6 +1,6 @@
 {
   "name": "@slide-ng/theme-seriph",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Serif fonts and a blue-grey accent: the seriph theme of Slidev, ported to slide.ng",
   "author": "Erkam Yaman (https://github.com/erkamyaman)",
   "license": "MIT",
