@@ -23,6 +23,10 @@
   margin-bottom: 1rem;
   font-weight: 700;
 }
+/* The subtitle under a heading: slide.ng dims it to 0.5 (3.4:1 on white); 0.65 keeps it lighter and above 4.5:1. */
+.slidev-layout h1 + p {
+  opacity: 0.65;
+}
 .slidev-layout h1 + h2 {
   margin-top: -1rem;
 }
@@ -38,8 +42,9 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 500;
-  margin-left: -0.05em;
-  opacity: 0.4;
+  margin-inline-start: -0.05em;
+  /* Small text: 4.5:1 on white (0.4 was 2.5:1). */
+  opacity: 0.65;
 }
 .slidev-layout ul {
   list-style: disc;

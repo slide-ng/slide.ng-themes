@@ -45,7 +45,7 @@ const THEMES = {
         ['seriph-cover', 'color', WHITE],
         ['seriph-cover', 'textAlign', 'center'],
       ],
-      ['sn-intro', ['h1', 'fontSize', '60px']],
+      ['sn-intro', ['h1', 'fontSize', '60px'], ['h1 + p', 'opacity', '0.65']],
       ['sn-default', ['h1', 'color', rgb(93, 131, 146)], ['pre.shiki', 'fontFamily', /^"PT Mono"/]],
       ['sn-section', ['h1', 'color', rgb(93, 131, 146)]],
       ['sn-statement', ['h1', 'fontWeight', '700']],
@@ -139,6 +139,7 @@ const THEMES = {
       [
         'bricks-default',
         ['bricks-default', 'paddingLeft', '88px'],
+        ['h1 + p', 'opacity', '0.65'],
         ['bricks-default', 'backgroundImage', /gradient/],
       ],
       [
@@ -163,7 +164,12 @@ const THEMES = {
     fontUrl: null, // `local: Helvetica Neue`: nothing is loaded from the provider
     fonts: { sans: 'Helvetica Neue' },
     slides: [
-      ['apple-intro', ['h1', 'fontWeight', '700'], ['h1', 'fontSize', '60px']],
+      [
+        'apple-intro',
+        ['h1', 'fontWeight', '700'],
+        ['h1', 'fontSize', '60px'],
+        ['h1 + p', 'opacity', '0.65'],
+      ],
       ['apple-intro-image', ['apple-intro-image', 'backgroundColor', rgb(74, 111, 165)]],
       [
         'apple-intro-image-right',

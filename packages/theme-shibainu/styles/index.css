@@ -22,8 +22,9 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 500;
-  margin-left: -0.05em;
-  opacity: 0.4;
+  margin-inline-start: -0.05em;
+  /* Small text: dimmed it fell below 3:1 on the brown and tan backgrounds. */
+  opacity: 1;
 }
 
 .slidev-layout.cover h1,
