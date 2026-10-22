@@ -60,6 +60,26 @@ node scripts/commit-message.mjs --range origin/main..HEAD
 
 To add a layout to an existing theme, write `layouts/<layout>.ts` (copy a small one), add a slide for it to the theme's deck in `examples/`, and extend the checks in `tests/themes.mjs`.
 
+### What slide.ng 2.0 adds for a theme
+
+The packages work with `@slide-ng/core` 1.x and 2.x. Use these only in a way that 1.x ignores, or keep a 1.x fallback.
+
+- `themeConfig`: settings a deck can change, as in Slidev. Give the defaults in `theme.json` (`"headmatter": { "themeConfig": { "primary": "#5d8392" } }`).
+  Each text or number key becomes the CSS variable `--slidev-theme-<key>` on `<body>`, and the deck's `themeConfig` replaces it.
+  A number has no unit, so give a length as text (`"6px"`). `seriph` does this; its `:root` value is the fallback for 1.x.
+- `--slidev-theme-primary` colours more of slide.ng in 2.0: the progress bar (`progressBar`), the presenter's click preview (the next click),
+  the sync menu, the border of an `/entry` link under the mouse, the current card of the quick overview and the controls.
+  Pick a primary that reads on the theme's slides and on the dark or light bar.
+  The click preview also takes `--slide-ng-ghost-next`, `--slide-ng-ghost-badge-background` and `--slide-ng-ghost-badge-foreground`.
+- `locales/<lang>.json`: translations of slide.ng's own interface, flat `"key": "text"` pairs from slide.ng's `docs/UI-STRINGS.md`. The deck's
+  `lang` picks the file; a theme's keys come after the built-in ones and before the addons' and the deck's.
+- Custom transitions: a `transition:` name that slide.ng does not have runs the classes `<name>-enter-from`, `<name>-enter-active`,
+  `<name>-enter-to` and the same with `leave`, so a theme can ship a transition in `styles/` and set it in the headmatter of `theme.json`.
+- Right to left: `lang: ar`, `he`, `fa` or `ur` sets `dir="rtl"`. Write `margin-inline-start`, `padding-inline-end`, `inset-inline-start`,
+  `border-inline-start` and `text-align: start` instead of left and right, so lists, rails and columns mirror.
+- Attributify: plain attributes in the theme's layouts and components become utilities (`<div m="4">`), except the inputs of the theme's
+  own components and the attributes inside an `<svg>`. Avoid an attribute with a utility's name (`border`, `text`, `flex`) that is not meant as one.
+
 ## Rules
 
 - Original code under MIT can be ported, with credit in the package README and in `NOTICE`.
