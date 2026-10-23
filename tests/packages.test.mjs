@@ -13,6 +13,13 @@ it('holds the five official themes', () => {
   assert.deepEqual(names.sort(), ['adev', 'apple-basic', 'bricks', 'seriph', 'shibainu']);
 });
 
+it('versions the five packages together', () => {
+  const versions = names.map(
+    (n) => json(join(root, 'packages', `theme-${n}`, 'package.json')).version,
+  );
+  assert.equal(new Set(versions).size, 1, versions.join(', '));
+});
+
 for (const name of names) {
   describe(`@slide-ng/theme-${name}`, () => {
     const dir = join(root, 'packages', `theme-${name}`);
@@ -25,7 +32,7 @@ for (const name of names) {
     it('has the package fields slide.ng and npm need', () => {
       assert.equal(pkg.name, `@slide-ng/theme-${name}`);
       assert.equal(pkg.license, 'MIT');
-      assert.ok(pkg.peerDependencies['@slide-ng/core']);
+      assert.equal(pkg.peerDependencies['@slide-ng/core'], '^1.0.0 || ^2.0.0');
       assert.deepEqual(pkg.keywords, ['slide-ng-theme', 'slide-ng']);
       assert.ok(pkg.files.includes('layouts') && pkg.files.includes('theme.json'));
       assert.ok(pkg.files.every((f) => !f.includes('..')));

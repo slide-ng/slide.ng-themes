@@ -12,7 +12,7 @@ values and font settings are ported to Angular; see the MIT notice in the NOTICE
   `quote`, `fact`, `statement` and `blank`.
 - The eleven shapes of the original `Polygon1` to `Polygon11` components, as `<polygon-1 />` to `<polygon-11 />` (kebab case, like Slidev also accepts).
   The shapes are drawn for slide.ng (plain arcs and lines, our own path data) and are not copies of the original artwork; only the component names, the colours and the natural sizes follow the original. They have their natural size; change it with classes:
-  `<polygon-7 class="w-20 h-20 m-auto" />` (the original used the attributes `w="20" h="20" m="auto"`, which slide.ng does not have).
+  `<polygon-7 class="w-20 h-20 m-auto" />` (the original's attributes, `<polygon-7 w="20" h="20" m="auto" />`, work with slide.ng 2.0, which reads them as utilities; slide.ng 1.x needs the classes).
 
 ## What is different
 

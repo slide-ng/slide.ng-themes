@@ -9,6 +9,9 @@ and font settings are ported to Angular; see the MIT notice in the NOTICE file a
 
 - Fonts (`theme.json`, loaded from the font provider): `Titillium Web` for text, `Fira Code` for code. Colour schema `dark`: the theme has dark colours only, so a deck that uses it stays dark (slide.ng warns when a deck asks for another mode).
 - Colours: text `#402312` on light backgrounds, `#EBEEF2` on dark ones, the brown and tan palette of the original.
+- Accent (`--slidev-theme-primary`, or `themeConfig.primary` with slide.ng 2.0): the light grey `#EBEEF2`, so the progress bar, the
+  presenter's click preview and the controls of the dark bar stand out on every background. Up to 1.0 it was the dark brown `#402312`,
+  which disappears on the brown slides and in the dark bar.
 - Small uppercase `h3`, and a 4em title in `quote` and a 3em title in `section-3`, as in the original.
 - Layouts, with the same names and content boxes: `cover`, `default`, `center`, `section`, `section-2`, `section-3`, `default-2` to `default-7`, `right`, `quote`.
   `default-3` sends the slide's `class` to its content box (`classProp` in `theme.json`).

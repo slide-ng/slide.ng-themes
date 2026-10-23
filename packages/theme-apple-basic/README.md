@@ -16,6 +16,9 @@ values and font settings are ported to Angular; see the MIT notice in the NOTICE
 ## What is different
 
 - Picture values are used as they are (an address, or a colour such as `#4a6fa5`). The theme has no pictures of its own.
+- The accent colour (`--slidev-theme-primary`), which slide.ng uses for its progress bar, the presenter's click preview and its menus, is
+  Apple's link blue: `#0066cc` in light mode, `#2997ff` in dark mode.
+- The text of `intro-image` keeps the deck's text colour, so give it a colour that reads on your picture (`text-white` in `examples/apple-basic.md`).
 - Code colours come from Shiki, not from the original's Prism style sheet.
 
 No image or other asset of the original theme is part of this folder.

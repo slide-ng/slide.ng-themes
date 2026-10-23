@@ -1,6 +1,8 @@
 /* bricks: bright flat shapes (red, yellow, blue, pink), a serif font for headings. Port of @slidev/theme-bricks.
    The backgrounds are our own CSS gradients in the same palette; no image of the original is used. */
+/* The accent of slide.ng's own parts (progress bar, presenter's next click, sync menu): a deeper blue than the shapes', for 5:1 on white. */
 :root {
+  --slidev-theme-primary: #3a6fb0;
   --bricks-red: #f07a6b;
   --bricks-yellow: #f9d56e;
   --bricks-blue: #72a6e2;
@@ -15,7 +17,8 @@
 .slidev-layout h1 + p {
   margin-top: -1rem;
   margin-bottom: 1rem;
-  opacity: 0.5;
+  /* Lighter than the text, still 4.5:1 on white (0.5 was 3.4:1). */
+  opacity: 0.65;
   font-family: var(--slidev-font-serif, serif);
 }
 .slidev-layout h3 {
@@ -25,8 +28,9 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: 500;
-  margin-left: -0.05em;
-  opacity: 0.4;
+  margin-inline-start: -0.05em;
+  /* Small text: 4.5:1 on white (0.4 was 2.5:1). */
+  opacity: 0.65;
 }
 .slidev-layout ul {
   list-style: disc;

@@ -103,12 +103,12 @@
 
 .slidev-layout.adev-section {
   position: relative;
-  padding-left: 6rem;
+  padding-inline-start: 6rem;
 }
 .slidev-layout.adev-section::before {
   content: '';
   position: absolute;
-  left: 3.5rem;
+  inset-inline-start: 3.5rem;
   top: 30%;
   bottom: 30%;
   width: 4px;
@@ -222,15 +222,15 @@
   column-gap: 0;
 }
 .slidev-layout.adev-two-cols .col-left {
-  padding-right: 2.25rem;
+  padding-inline-end: 2.25rem;
 }
 .slidev-layout.adev-two-cols .col-left > :first-child,
 .slidev-layout.adev-two-cols .col-right > :first-child {
   margin-top: 0;
 }
 .slidev-layout.adev-two-cols .col-right {
-  padding-left: 2.25rem;
-  border-left: 1px solid var(--adev-senary);
+  padding-inline-start: 2.25rem;
+  border-inline-start: 1px solid var(--adev-senary);
 }
 
 .adev-photo {

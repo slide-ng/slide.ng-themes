@@ -72,7 +72,7 @@
 }
 .adev-count-up-number {
   display: inline-block;
-  text-align: right;
+  text-align: end;
   font-variant-numeric: tabular-nums;
 }
 
@@ -133,19 +133,19 @@
 .adev-steps ol {
   list-style: none;
   counter-reset: adev-step;
-  padding-left: 3rem;
+  padding-inline-start: 3rem;
   margin: 1rem 0;
 }
 .adev-steps ol > li {
   position: relative;
   counter-increment: adev-step;
   margin: 0 0 0.9rem;
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 .adev-steps ol > li::before {
   content: counter(adev-step);
   position: absolute;
-  left: -3rem;
+  inset-inline-start: -3rem;
   top: 0.1rem;
   display: flex;
   align-items: center;
@@ -171,7 +171,7 @@
 .adev-scheme-button {
   position: absolute;
   top: 14px;
-  right: 14px;
+  inset-inline-end: 14px;
   z-index: 10;
   display: flex;
   align-items: center;

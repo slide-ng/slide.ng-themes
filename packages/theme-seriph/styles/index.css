@@ -1,10 +1,15 @@
 /* seriph: serif fonts (theme.json), a blue-grey accent and coloured headings. Port of @slidev/theme-seriph. */
+/* The accent is `themeConfig.primary` in theme.json, which slide.ng 2.0 sets on body and a deck can change. This default is for 1.x. */
 :root {
   --slidev-theme-primary: #5d8392;
 }
 
 .slidev-layout h1 {
   color: var(--slidev-theme-primary);
+}
+/* The subtitle under a heading: slide.ng dims it to 0.5 (3.4:1 on white); 0.65 keeps it lighter and above 4.5:1. */
+.slidev-layout h1 + p {
+  opacity: 0.65;
 }
 
 /* The cover and intro keep the text colour for the title. */

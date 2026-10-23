@@ -76,13 +76,13 @@
 }
 .slidev-layout ul > li {
   position: relative;
-  margin-left: 0;
-  padding-left: 1.4em;
+  margin-inline: 0;
+  padding-inline: 1.4em 0;
 }
 .slidev-layout ul > li::before {
   content: '';
   position: absolute;
-  left: 0.1em;
+  inset-inline-start: 0.1em;
   top: 0.78em;
   width: 0.45em;
   height: 0.45em;
@@ -103,7 +103,8 @@
 .slidev-layout blockquote {
   background: color-mix(in srgb, var(--adev-bright-blue) 5%, transparent);
   color: var(--adev-primary);
-  border-left: 3px solid;
+  border: 0;
+  border-inline-start: 3px solid;
   border-image: var(--adev-grad-purple-blue-v) 1;
   border-radius: 0;
   padding: 0.75rem 1.25rem;

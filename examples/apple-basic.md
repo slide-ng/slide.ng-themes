@@ -17,9 +17,9 @@ layout: intro-image
 image: '#4a6fa5'
 ---
 
-<div class="absolute top-10"><span class="font-700">Author and date</span></div>
+<div class="absolute top-10 text-white"><span class="font-700">Author and date</span></div>
 
-<div class="absolute bottom-10">
+<div class="absolute bottom-10 text-white">
   <h1>intro-image</h1>
   <p>A colour stands in for the photo</p>
 </div>
