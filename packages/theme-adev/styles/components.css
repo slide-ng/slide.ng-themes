@@ -190,6 +190,12 @@
     color 0.3s ease,
     border-color 0.3s ease;
 }
+/* slide.ng 2.1 can put the navigation bar at the top (`navPosition: top-right` and the others). Its box would cover the
+   button there, so the button moves to the bottom corner. */
+body:has(.nav-bar-box.top-0) .adev-scheme-button {
+  top: auto;
+  bottom: 14px;
+}
 .adev-scheme-button:hover {
   background: var(--adev-septenary);
   color: var(--adev-primary);

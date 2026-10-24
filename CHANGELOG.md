@@ -4,6 +4,10 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+### Fixed
+
+- `@slide-ng/theme-adev`: with slide.ng 2.1's `navPosition: top-left`, `top-center` or `top-right`, the box of the navigation bar covered the scheme button in the top corner, so a click there showed the bar instead. The button now moves to the bottom corner when the bar is at the top.
+
 ## [1.1.0] - Unreleased
 
 Ready for `@slide-ng/core` 2.0. The five themes are tested with 2.0.0 and still work with 1.x.
