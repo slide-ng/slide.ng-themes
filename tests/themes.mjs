@@ -619,6 +619,29 @@ try {
       await button(page).focus();
       await page.keyboard.press('Enter');
       t.ok('adev: the button works from the keyboard', (await scheme(page)) === 'light');
+      // slide.ng 2.1's `navPosition: top-*` puts the box of the bar at the top, where it would cover the button.
+      const reachable = () =>
+        page.evaluate(() => {
+          const r = document.querySelector('.adev-scheme-button').getBoundingClientRect();
+          const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+          return { top: r.top, free: Boolean(hit?.closest('.adev-scheme-button')) };
+        });
+      const atBottom = await reachable();
+      t.ok(
+        'adev: the button is free at the top with the bar at the bottom',
+        atBottom.free && atBottom.top < 100,
+      );
+      await page.evaluate(() => {
+        const box = document.querySelector('.nav-bar-box');
+        box.classList.remove('bottom-0');
+        box.classList.add('top-0');
+      });
+      const atTop = await reachable();
+      t.ok(
+        'adev: with the bar at the top the button moves to the bottom and stays free',
+        atTop.free && atTop.top > 600,
+        JSON.stringify(atTop),
+      );
       await page.close();
 
       const night = await ctx.open('/3', sized, async (pg) => {

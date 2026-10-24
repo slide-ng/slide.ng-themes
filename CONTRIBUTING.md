@@ -80,6 +80,13 @@ The packages work with `@slide-ng/core` 1.x and 2.x. Use these only in a way tha
 - Attributify: plain attributes in the theme's layouts and components become utilities (`<div m="4">`), except the inputs of the theme's
   own components and the attributes inside an `<svg>`. Avoid an attribute with a utility's name (`border`, `text`, `flex`) that is not meant as one.
 
+### What slide.ng 2.1 adds for a theme
+
+- `navPosition` can put the navigation bar at the top (`top-left`, `top-center`, `top-right`), and its menus then open below it. The box of the
+  bar takes the mouse in its corner even while the bar is hidden, so do not put a button of the theme in a top corner, or move it when the bar
+  is at the top, as `adev` does with its scheme button.
+- `languages` adds a language button to the bar. A theme's `locales/<lang>.json` can translate its `nav.language` and `language.menu`.
+
 ## Rules
 
 - Original code under MIT can be ported, with credit in the package README and in `NOTICE`.
